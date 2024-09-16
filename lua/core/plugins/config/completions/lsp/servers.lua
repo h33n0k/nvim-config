@@ -1,10 +1,20 @@
+-- LSP servers
 return {
-	"rust_analyzer",
+	-- Bash
 	"bashls",
-	"cssls",
-	"emmet_ls",
+	"awk_ls",
+
+	"yamlls", -- YAML
+	"lua_ls", -- Lua
+	"rust_analyzer", -- Rust
+
+	-- HTML / CSS
 	"html",
+	"emmet_ls",
+	"css_variables",
+	
+	-- Typescript
 	"eslint",
-	"lua_ls",
-	"biome"
+	"biome",
+	"ts_ls"
 }
