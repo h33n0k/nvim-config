@@ -4,7 +4,7 @@ return {
 	"bashls",
 	"awk_ls",
 
-	"yamlls", -- YAML
+	-- "yamlls", -- YAML
 	"lua_ls", -- Lua
 	"rust_analyzer", -- Rust
 
