@@ -12,7 +12,7 @@ This setup is tailored to enhance my coding experience with Neovim, providing a 
 
 #### Install it now :
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/valentingorr/nvim-config/main/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/h33n0k/nvim-config/main/install.sh)"
 ```
 
 * * *
@@ -24,7 +24,7 @@ mv ~/.config/nvim/ ~/.config/nvim.backup/
 ```
 ```bash
 # clone repository
-git clone https://github.com/valentingorr/nvim-config.git ~/.config/nvim/
+git clone https://github.com/h33n0k/nvim-config.git ~/.config/nvim/
 ```
 ```bash
 # Sync plugins
@@ -38,7 +38,7 @@ mv $env:LOCALAPPDATA/nvim/ $env:LOCALAPPDATA/nvim.backup/
 ```
 ```bash
 # clone repository
-git clone https://github.com/valentingorr/nvim-config.git $env:LOCALAPPDATA/nvim/
+git clone https://github.com/h33n0k/nvim-config.git $env:LOCALAPPDATA/nvim/
 ```
 ```bash
 # Sync plugins
@@ -97,4 +97,4 @@ Let me know or even whip up a `pull request`.
 Should a hiccup come your way, give the `:checkhealth` command in nvim a spin for some DIY troubleshooting.  
 Take a moment to delve into the details of the health check messages, they hold the clues you need.  
 
-If you still have an issue, [open a new issue](https://github.com/valentingorr/nvim-config/issues).
+If you still have an issue, [open a new issue](https://github.com/h33n0k/nvim-config/issues).
