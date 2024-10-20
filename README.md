@@ -2,7 +2,7 @@
 
 This setup is tailored to enhance my coding experience with Neovim, providing a streamlined and efficient environment for various programming projects.
 
-![preview](https://git.gorr.in/h33n0k/nvim-config/raw/branch/main/demo.png)
+![preview](blob:https://github.com/67dc4881-8a2c-45da-9236-d3b9becf8897)
 
 ### Available on
 
