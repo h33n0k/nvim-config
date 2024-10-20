@@ -2,21 +2,15 @@
 
 This setup is tailored to enhance my coding experience with Neovim, providing a streamlined and efficient environment for various programming projects.
 
-![preview](https://i.imgur.com/4YFBo9m.png)
+![preview](https://git.gorr.in/h33n0k/nvim-config/raw/branch/main/demo.png)
 
 ### Available on
 
 ![Static Badge](https://img.shields.io/badge/-linux-none?style=for-the-badge&logo=linux&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23a6da95)
 ![Static Badge](https://img.shields.io/badge/-mac-none?style=for-the-badge&logo=apple&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23a6da95)
-![Static Badge](https://img.shields.io/badge/-windows-none?style=for-the-badge&logo=windows&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23a6da95)
+![Static Badge](https://img.shields.io/badge/-windows-none?style=for-the-badge&logo=gnometerminal&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23a6da95)
 
-#### Install it now :
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/h33n0k/nvim-config/main/install.sh)"
-```
-
-* * *
-
+### Installation :
 #### Unix like :
 ```bash
 # backup current config (optional)
@@ -24,7 +18,7 @@ mv ~/.config/nvim/ ~/.config/nvim.backup/
 ```
 ```bash
 # clone repository
-git clone https://github.com/h33n0k/nvim-config.git ~/.config/nvim/
+git clone https://github.com/valentingorr/nvim-config.git ~/.config/nvim/
 ```
 ```bash
 # Sync plugins
@@ -38,7 +32,7 @@ mv $env:LOCALAPPDATA/nvim/ $env:LOCALAPPDATA/nvim.backup/
 ```
 ```bash
 # clone repository
-git clone https://github.com/h33n0k/nvim-config.git $env:LOCALAPPDATA/nvim/
+git clone https://github.com/valentingorr/nvim-config.git $env:LOCALAPPDATA/nvim/
 ```
 ```bash
 # Sync plugins
@@ -50,7 +44,7 @@ git clone https://github.com/h33n0k/nvim-config.git $env:LOCALAPPDATA/nvim/
 ### Configuration
 
 ![Static Badge](https://img.shields.io/badge/nvim-0.9.5-none?style=for-the-badge&logo=neovim&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23B7BDF8)
-![Static Badge](https://img.shields.io/badge/packer-40%20plugins-none?logo=onlyoffice&style=for-the-badge&labelColor=%23363A4F&color=%23B7BDF8)
+![Static Badge](https://img.shields.io/badge/packer-39%20plugins-none?logo=onlyoffice&style=for-the-badge&labelColor=%23363A4F&color=%23B7BDF8)
 
 # Features
 
@@ -71,7 +65,6 @@ git clone https://github.com/h33n0k/nvim-config.git $env:LOCALAPPDATA/nvim/
 [![Static Badge](https://img.shields.io/badge/-tpope%2Fvim--surround-none?style=for-the-badge&logo=git&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23181926)](https://github.com/tpope/vim-surround)  
 [![Static Badge](https://img.shields.io/badge/-nvim--treesitter%2Fnvim--treesitter-none?style=for-the-badge&logo=git&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23181926)](https://github.com/nvim-treesitter/nvim-treesitter)  
 [![Static Badge](https://img.shields.io/badge/-Fymyte%2Frasi.vim-none?style=for-the-badge&logo=git&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23181926)](https://github.com/Fymyte/rasi.vim)  
-[![Static Badge](https://img.shields.io/badge/-max397574%2Fbetter--escape.nvim-none?style=for-the-badge&logo=git&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23181926)](https://github.com/max397574/better-escape.nvim)  
 [![Static Badge](https://img.shields.io/badge/-kevinhwang91%2Fnvim--ufo-none?style=for-the-badge&logo=git&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23181926)](https://github.com/kevinhwang91/nvim-ufo)  
 [![Static Badge](https://img.shields.io/badge/-nvim--treesitter--textobjects-none?style=for-the-badge&logo=git&logoColor=%23FFFFFF&labelColor=%23363A4F&color=%23181926)](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
 
@@ -97,4 +90,4 @@ Let me know or even whip up a `pull request`.
 Should a hiccup come your way, give the `:checkhealth` command in nvim a spin for some DIY troubleshooting.  
 Take a moment to delve into the details of the health check messages, they hold the clues you need.  
 
-If you still have an issue, [open a new issue](https://github.com/h33n0k/nvim-config/issues).
+If you still have an issue, [open a new issue](https://github.com/valentingorr/nvim-config/issues).

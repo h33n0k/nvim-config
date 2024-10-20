@@ -19,6 +19,16 @@ vim.opt.termguicolors = true
 vim.cmd("autocmd BufRead,BufNewFile *.zsh setfiletype bash")
 vim.cmd("autocmd BufRead,BufNewFile *.ejs setfiletype html")
 
+-- Set tab settings
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "yaml",
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end,
+})
+
 -- Transparency
 vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
 vim.cmd('hi SignColumn guibg=NONE ctermbg=NONE')

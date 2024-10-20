@@ -14,7 +14,6 @@ return {
 	"css_variables",
 	
 	-- Typescript
-	"eslint",
 	"biome",
 	"ts_ls"
 }

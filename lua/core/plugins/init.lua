@@ -11,7 +11,6 @@ return {
 	},
 	"telescope",
 	"wilder",
-	"better_escape",
 	"catppuccin",
 	"smoothcursor",
 	"neo-tree",

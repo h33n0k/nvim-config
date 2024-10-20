@@ -36,7 +36,6 @@ return {
 			end
 		end
 	},
-	"max397574/better-escape.nvim",
 	"preservim/tagbar",
 	"akinsho/toggleterm.nvim",
 	"lewis6991/gitsigns.nvim",
