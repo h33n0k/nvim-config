@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
 -- Exit Terminal Mode
-keymap.set('t', '<Esc>', '<C-\\><C-n>')
+keymap.set('t', '<A-Esc>', '<C-\\><C-n>')
 
 -- Scroll up and down
 keymap.set('', '<c-e>', '5<c-e>')

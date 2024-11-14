@@ -5,6 +5,10 @@ return {
 
 	'lua_ls', -- Lua
 
+	-- C
+	'clangd',
+	'ast_grep',
+
 	-- Typescript
 	'biome',
 	'ts_ls'

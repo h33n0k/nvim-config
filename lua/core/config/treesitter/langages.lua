@@ -1,4 +1,5 @@
 return {
+	"c",
 	"bash",
 	"comment",
 	"lua",

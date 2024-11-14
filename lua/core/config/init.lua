@@ -31,6 +31,7 @@ return {
 	-- LSP / Completions
 	{ { 'cmp', 'luasnip', 'lsp-status', 'cmp_nvim_lsp', 'mason-lspconfig', 'lspconfig', 'mason' },
 		'completion' },
+	'lsp_lines',
 	-- UI
 	'alpha',
 	'toggleterm',

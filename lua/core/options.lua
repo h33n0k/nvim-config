@@ -27,7 +27,7 @@ opt.expandtab = false       -- Use tabs instead of spaces
 opt.shiftwidth = 2          -- Shift 4 spaces when tab
 opt.tabstop = 2             -- 1 tab == 4 spaces
 opt.softtabstop = 2
-opt.smartindent = true      -- Autoindent new lines
+-- opt.smartindent = true      -- Autoindent new lines
 
 -- Memory, CPU
 opt.hidden = true           -- Enable background buffers

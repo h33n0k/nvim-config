@@ -32,6 +32,7 @@ return {
 	'williamboman/mason.nvim',
 	'williamboman/mason-lspconfig.nvim',
 	'neovim/nvim-lspconfig',
+	'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
 	-- UI
 	{ 'goolord/alpha-nvim', requires = 'nvim-tree/nvim-web-devicons' },
 	'preservim/tagbar',
