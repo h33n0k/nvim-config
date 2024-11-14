@@ -19,13 +19,13 @@ local Terminal = require "toggleterm.terminal".Terminal
 
 local lazygitTerminal = Terminal:new { cmd = "lazygit", direction = "float" }
 function _G.term_lazygit() lazygitTerminal:toggle() end
-vim.keymap.set("n", "<A-t>g", ":lua term_lazygit()<CR>")
+vim.keymap.set("n", "<A-g>", ":lua term_lazygit()<CR>")
 
 local lazygitTerminal = Terminal:new { cmd = "yazi", direction = "float" }
 function _G.term_yazi() lazygitTerminal:toggle() end
-vim.keymap.set("n", "<A-t>e", ":lua term_yazi()<CR>")
+vim.keymap.set("n", "<A-y>", ":lua term_yazi()<CR>")
 
 
 local sptTerminal = Terminal:new { cmd = "spt", direction = "float" }
 function _G.term_spt() sptTerminal:toggle() end
-vim.keymap.set("n", "<A-t>s", ":lua term_spt()<CR>")
+vim.keymap.set("n", "<A-s>", ":lua term_spt()<CR>")

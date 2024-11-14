@@ -2,7 +2,7 @@ local hop = require 'hop'
 local directions = require 'hop.hint'.HintDirection
 
 hop.setup {
-	keys = 'jhkl'
+	keys = 'hjkl'
 }
 
 local keymap = vim.keymap
