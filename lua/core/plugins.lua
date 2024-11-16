@@ -21,7 +21,7 @@ return {
 	'tpope/vim-surround',
 	'lambdalisue/suda.vim',
 	'mg979/vim-visual-multi',
-	{	'kevinhwang91/nvim-hlslens', config = function () require 'hlslens'.setup() end }, -- prevent their anoying warning
+	{ 'h33n0k/nvim-hlslens' },
 	{ 'phaazon/hop.nvim', branch = 'v2' },
 	'windwp/nvim-autopairs',
 	-- LSP / Completions

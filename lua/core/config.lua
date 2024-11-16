@@ -12,7 +12,7 @@
 -- }
 --------
 
-return {
+local configs = {
 	-- Theming
 	{ { 'catppuccin' }, 'theme' },
 	'smoothcursor',
@@ -43,3 +43,39 @@ return {
 	'lualine',
 	'neo-tree',
 }
+
+-- Load plugins configurations
+for i = 1, #configs do
+
+	local modules
+	local file
+
+	if type(configs[i]) == 'table' then
+		if type(configs[i][1]) == 'table' then
+			modules = configs[i][1]
+		else
+			modules = {configs[i][1]}
+		end
+		file = configs[i][2]
+	else
+		modules = {configs[i]}
+		file = configs[i]
+	end
+
+	local pluginStatus = true
+	for _, module in pairs(modules) do
+		local module_status, _ = pcall(require, module)
+		pluginStatus = module_status
+	end
+
+	file = 'core.configs.'..file
+
+	if pluginStatus then
+		if not pcall(require, file) then
+			if #modules == 1 then
+				require(modules[1]).setup()
+			end
+		end
+	end
+
+end

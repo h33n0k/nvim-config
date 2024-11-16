@@ -13,7 +13,6 @@ require 'neo-tree'.setup {
 					require 'neo-tree.sources.manager'.refresh(state.name)
 					print('moved \'' ..path ..'\' into trash.')
 				end)
-				print(path)
 			end
 		},
 		filtered_items = {

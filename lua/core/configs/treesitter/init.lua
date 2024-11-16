@@ -1,5 +1,5 @@
 require 'nvim-treesitter.configs'.setup {
-	ensure_installed = require 'core.config.treesitter.langages',
+	ensure_installed = require 'core.configs.treesitter.langages',
 	sync_install = false,
 	autopairs = { enable = true },
 	highlight = {
@@ -17,6 +17,6 @@ require 'nvim-treesitter.configs'.setup {
 			node_decremental = '<bs>',
 		},
 	},
-	refactor = require 'core.config.treesitter.refactor',
-	textobjects = require 'core.config.treesitter.textobjects',
+	refactor = require 'core.configs.treesitter.refactor',
+	textobjects = require 'core.configs.treesitter.textobjects',
 }

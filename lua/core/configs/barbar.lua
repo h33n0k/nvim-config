@@ -1,16 +1,22 @@
 local palette = require 'core.colors'
 
 require 'barbar'.setup {
+	auto_hide = true,
+	animation = false,
+	no_name_title = nil,
+	maximum_length = 10,
+	minimum_length = 0,
+	focus_on_close = 'right',
+	insert_at_end = true,
+  insert_at_start = false,
 	icons = {
 		separator = {left = '', right = ''},
 		separator_at_end = false,
 		filetype = {
+			enabled = true,
 			custom_colors = true,
 		}
 	},
-	auto_hide = true,
-	maximum_length = 15,
-	minimum_length = 15,
 	sidebar_filetypes = {
 		['neo-tree'] = { event = 'BufWipeout' }
 	}
