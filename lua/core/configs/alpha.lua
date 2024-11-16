@@ -1,3 +1,4 @@
+local alpha = require 'alpha'
 local dashboard = require 'alpha.themes.dashboard'
 
 dashboard.section.header.val = {
@@ -28,4 +29,4 @@ dashboard.section.header.opts.hl = 'Title'
 dashboard.section.buttons.opts.hl = 'Keyword'
 dashboard.opts.opts.noautocmd = true
 
-require 'alpha'.setup(dashboard.opts)
+alpha.setup(dashboard.opts)

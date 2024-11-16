@@ -1,4 +1,4 @@
-local servers = require 'core.config.completion.lsp.servers'
+local servers = require 'core.configs.completion.lsp.servers'
 
 local navic = require 'nvim-navic'
 local lspconfig = require 'lspconfig'
@@ -6,8 +6,6 @@ local lsp_status = require 'lsp-status'
 
 lsp_status.register_progress()
 local capabilities = vim.tbl_extend('keep', require 'cmp_nvim_lsp'.default_capabilities() or {}, lsp_status.capabilities)
-
-require 'mason'.setup()
 require 'mason-lspconfig'.setup {
 	automatic_installation = true,
 	ensure_installed = servers

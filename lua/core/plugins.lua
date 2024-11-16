@@ -21,7 +21,7 @@ return {
 	'tpope/vim-surround',
 	'lambdalisue/suda.vim',
 	'mg979/vim-visual-multi',
-	{ 'h33n0k/nvim-hlslens' },
+	'kevinhwang91/nvim-hlslens',
 	{ 'phaazon/hop.nvim', branch = 'v2' },
 	'windwp/nvim-autopairs',
 	-- LSP / Completions

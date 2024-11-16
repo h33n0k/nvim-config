@@ -1,5 +1,5 @@
 -- Install packer
-local packerPath = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local packerPath
 
 local function isWindows()
 	return vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1
@@ -16,6 +16,8 @@ if isWindows() then
 	end
 	local local_appdata = get_env('LOCALAPPDATA', 'C:\\Users\\(nom_dutilisateur)\\AppData\\Local')
 	packerPath = local_appdata .. '\\nvim-data\\site\\pack\\packer\\start\\packer.nvim'
+else
+	packerPath = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 end
 
 local ensure_packer = function()

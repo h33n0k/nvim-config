@@ -34,6 +34,7 @@ local configs = {
 	'lsp_lines',
 	-- UI
 	'alpha',
+	'hlslens',
 	'toggleterm',
 	'gitsigns',
 	'wilder',
