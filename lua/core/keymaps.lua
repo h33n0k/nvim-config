@@ -31,6 +31,7 @@ keymap.set('n', '<A-f>', ':NeoTreeFloatToggle<CR>')
 keymap.set('', '<A-,>', ':BufferPrevious<CR>')
 keymap.set('', '<A-;>', ':BufferNext<CR>')
 keymap.set('', '<A-c>', ':BufferClose<CR>')
+keymap.set('', '<AS-c>', ':BufferCloseAllButCurrent<CR>')
 keymap.set('n', '<AS-,>', ':BufferMovePrevious<CR>')
 keymap.set('n', '<AS-;>', ':BufferMoveNext<CR>')
 

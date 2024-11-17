@@ -32,6 +32,9 @@ local configs = {
 	{ { 'cmp', 'luasnip', 'lsp-status', 'cmp_nvim_lsp', 'mason-lspconfig', 'lspconfig', 'mason' },
 		'completion' },
 	'lsp_lines',
+	-- DAP
+	{ { 'dap', 'dapui' },
+		'dap' },
 	-- UI
 	'alpha',
 	'hlslens',

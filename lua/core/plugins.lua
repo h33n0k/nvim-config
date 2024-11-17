@@ -33,6 +33,15 @@ return {
 	'williamboman/mason-lspconfig.nvim',
 	'neovim/nvim-lspconfig',
 	'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+	-- DAP
+	'mfussenegger/nvim-dap',
+	'theHamsta/nvim-dap-virtual-text',
+	{ 'rcarriga/nvim-dap-ui', requires = {
+		'nvim-neotest/nvim-nio' } },
+	'nvim-telescope/telescope-dap.nvim',
+	'mxsdev/nvim-dap-vscode-js',
+	{ 'microsoft/vscode-js-debug', opt = true,
+		run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out' },
 	-- UI
 	{ 'goolord/alpha-nvim', requires = 'nvim-tree/nvim-web-devicons' },
 	'preservim/tagbar',
