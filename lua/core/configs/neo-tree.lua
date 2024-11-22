@@ -2,6 +2,11 @@ local inputs = require 'neo-tree.ui.inputs'
 
 require 'neo-tree'.setup {
 	enable_git_status = true,
+	window = {
+		mappings = {
+			['P'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = false } }
+		}
+	},
 	filesystem = {
 		commands = {
 			delete = function(state)
@@ -27,6 +32,23 @@ require 'neo-tree'.setup {
 			hide_by_name = {
 				'.git',
 				'node_modules'
+			}
+		}
+	},
+	default_component_configs = {
+		icon = {
+			folder_empty = "󰜌",
+		},
+		git_status = {
+			symbols = {
+				added     = "",
+				modified  = "",
+				-- Status type
+				untracked = "󱀶",
+				ignored   = "󱗤",
+				unstaged  = "",
+				staged    = "",
+				conflict  = "",
 			}
 		}
 	}

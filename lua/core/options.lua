@@ -1,51 +1,45 @@
-local g = vim.g       -- Global variables
-local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
-
 -- General
-opt.mouse = 'a'																-- Enable mouse support
-opt.swapfile = false													-- Don't use swapfile
-opt.completeopt = 'menuone,noinsert,noselect'	-- Autocomplete options
+vim.opt.mouse = 'a'																-- Enable mouse support
+vim.opt.swapfile = true													-- Use swapfile
+vim.opt.completeopt = 'menuone,noinsert,noselect'	-- Autocomplete options
 
 -- Neovim UI
-opt.number = true						-- Show line number
-opt.relativenumber = true		-- Show relative line numbers
-opt.cursorline = true				-- Highlight hovered line
-opt.showmatch = true        -- Highlight matching parenthesis
-opt.splitright = true       -- Vertical split to the right
-opt.splitbelow = true       -- Horizontal split to the bottom
-opt.ignorecase = true       -- Ignore case letters when search
-opt.smartcase = true        -- Ignore lowercase for the whole pattern
-opt.linebreak = true        -- Wrap on word boundary
-opt.termguicolors = true    -- Enable 24-bit RGB colors
-opt.laststatus=3            -- Set global statusline
+vim.opt.signcolumn = 'auto:2'
+vim.opt.number = true						-- Show line number
+vim.opt.relativenumber = true		-- Show relative line numbers
+vim.opt.numberwidth = 3
+vim.opt.cursorline = true				-- Highlight hovered line
+vim.opt.showmatch = true        -- Highlight matching parenthesis
+vim.opt.splitright = true       -- Vertical split to the right
+vim.opt.splitbelow = true       -- Horizontal split to the bottom
+vim.opt.ignorecase = true       -- Ignore case letters when search
+vim.opt.smartcase = true        -- Ignore lowercase for the whole pattern
+vim.opt.linebreak = true        -- Wrap on word boundary
+vim.opt.termguicolors = true    -- Enable 24-bit RGB colors
+vim.opt.laststatus=3            -- Set global statusline
+
+-- Disable automatic commenting behavior
+vim.opt.formatoptions:remove('c')
+vim.opt.formatoptions:remove('r')
+vim.opt.formatoptions:remove('o')
 
 -- Tabs, indent, fold, scroll
-opt.expandtab = false       -- Use tabs instead of spaces
-opt.shiftwidth = 2          -- Shift 4 spaces when tab
-opt.tabstop = 2             -- 1 tab == 4 spaces
-opt.softtabstop = 2
-opt.foldcolumn = "1"
-opt.foldlevel = 99
-opt.foldlevelstart = 99
-opt.foldenable = true
-opt.scrolloff = 5
--- opt.smartindent = true      -- Autoindent new lines
+vim.opt.expandtab = false       -- Use tabs instead of spaces
+vim.opt.shiftwidth = 2          -- Shift 2 spaces when tab
+vim.opt.tabstop = 2             -- 1 tab = 2 spaces
+vim.opt.softtabstop = 2
+vim.opt.foldcolumn = '1'
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+vim.opt.scrolloff = 5
 
 -- Memory, CPU
-opt.hidden = true           -- Enable background buffers
-opt.history = 100           -- Remember N lines in history
-opt.lazyredraw = true       -- Faster scrolling
-opt.synmaxcol = 240         -- Max column for syntax highlight
-opt.updatetime = 10					-- ms to wait for trigger an event
+vim.opt.hidden = true           -- Enable background buffers
+vim.opt.history = 100           -- Remember N lines in history
+vim.opt.lazyredraw = true       -- Faster scrolling
+vim.opt.synmaxcol = 240         -- Max column for syntax highlight
+vim.opt.updatetime = 10					-- ms to wait for trigger an event
 
 -- Disable nvim intro
-opt.shortmess:append "sI"
-
--- Set default filetypes
-vim.cmd("autocmd BufRead,BufNewFile *.zsh setfiletype bash")
-vim.cmd("autocmd BufRead,BufNewFile *.ejs setfiletype html")
-
--- Transparency
-vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
-vim.cmd('hi SignColumn guibg=NONE ctermbg=NONE')
-vim.cmd('hi VertSplit guibg=NONE ctermbg=NONE')
+vim.opt.shortmess:append 'sI'

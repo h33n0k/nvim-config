@@ -11,19 +11,27 @@ require 'mason-lspconfig'.setup {
 	ensure_installed = servers
 }
 
+require 'neodev'.setup()
+
+local prefix = '<Leader>l'
 for _, server in pairs(servers)  do
 	server = vim.split(server, '@')[1]
 	lspconfig[server].setup({
 		on_attach = function(client, bufnr)
-			local opts = { buffer = bufnr }
 			lsp_status.on_attach(client)
 			navic.attach(client, bufnr)
-			vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-			vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-			vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
-			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+			for _, map in pairs {
+				{ 'd', vim.diagnostic.open_float },
+				{ 'gr', require 'telescope.builtin'.lsp_references },
+				{ 'r', vim.lsp.buf.rename },
+				{ 'ca', vim.lsp.buf.code_action },
+				{ 'd', vim.lsp.buf.definition },
+				{ 'i', vim.lsp.buf.implementation },
+				{ 'l', vim.lsp.buf.hover },
+				{ 'd', function () vim.diagnostic.open_float(nil, { border = 'rounded' }) end }
+			} do
+				vim.keymap.set('n', prefix ..map[1], map[2], { buffer = bufnr })
+			end
 		end,
 		capabilities = capabilities,
 	})

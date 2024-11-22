@@ -49,6 +49,7 @@ require 'packer'.startup(function(use)
 
 end)
 
+vim.g.mapleader = ' '
 require 'core.config'
 require 'core.options'
 require 'core.autocmds'

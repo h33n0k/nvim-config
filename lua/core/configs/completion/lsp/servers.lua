@@ -3,7 +3,7 @@ return {
 	'bashls',
 	'awk_ls',
 
-	'lua_ls', -- Lua
+	'lua_ls', -- lua
 
 	-- C
 	'clangd',

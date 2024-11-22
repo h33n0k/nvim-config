@@ -3,7 +3,6 @@ return {
 	{ "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, },
 	-- Theming
 	'catppuccin/nvim',
-	'gen740/SmoothCursor.nvim',
 	'lukas-reineke/indent-blankline.nvim',
 	-- Syntax / Highlighting
 	'NvChad/nvim-colorizer.lua',
@@ -28,6 +27,7 @@ return {
 	'L3MON4D3/LuaSnip',
 	'nvim-lua/lsp-status.nvim',
 	'hrsh7th/nvim-cmp',
+	'folke/neodev.nvim',
 	'hrsh7th/cmp-nvim-lsp',
 	'williamboman/mason.nvim',
 	'williamboman/mason-lspconfig.nvim',
@@ -43,6 +43,9 @@ return {
 	{ 'microsoft/vscode-js-debug', opt = true,
 		run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out' },
 	-- UI
+	'tpope/vim-fugitive',
+	'nvim-pack/nvim-spectre',
+	'folke/noice.nvim',
 	{ 'goolord/alpha-nvim', requires = 'nvim-tree/nvim-web-devicons' },
 	'preservim/tagbar',
 	'akinsho/toggleterm.nvim',

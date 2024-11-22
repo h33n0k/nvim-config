@@ -15,15 +15,14 @@
 local configs = {
 	-- Theming
 	{ { 'catppuccin' }, 'theme' },
-	'smoothcursor',
 	{ { 'ibl' }, 'indent-blankline' },
 	-- Syntax / HighLighting
-	'colorizer',
 	{
 		{ 'nvim-treesitter.configs' },
 		'treesitter'
 	},
 	-- Writting
+	'gitsigns',
 	'ufo',
 	'marks',
 	'hop',
@@ -36,11 +35,11 @@ local configs = {
 	{ { 'dap', 'dapui' },
 		'dap' },
 	-- UI
+	'spectre',
+	'noice',
 	'alpha',
 	'hlslens',
 	'toggleterm',
-	'gitsigns',
-	'wilder',
 	'barbecue',
 	'barbar',
 	'telescope',

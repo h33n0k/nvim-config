@@ -1,7 +1,6 @@
-local status, catppuccin = pcall(require, 'catppuccin')
+local status, _ = pcall(require, 'catppuccin')
 if not status then
 	return {}
 end
 
-local palette = require 'catppuccin.palettes'.get_palette 'macchiato'
-return palette
+return require 'catppuccin.palettes'.get_palette 'macchiato'

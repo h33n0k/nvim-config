@@ -1,45 +1,59 @@
-local keymap = vim.keymap
-
 -- Exit Terminal Mode
-keymap.set('t', '<A-ESC>', '<C-\\><C-N>')
+vim.keymap.set('t', '<A-ESC>', '<C-\\><C-N>')
+
+-- Select pasted content
+vim.keymap.set('n', '<Leader>gv', '`[v`]')
+for _, key in pairs({ 'p', 'P' }) do
+	vim.keymap.set({ 'n', 'v' }, key, function ()
+		vim.cmd('normal! ' ..key)
+		vim.cmd('normal! `[v`]')
+		vim.cmd('normal! ==')
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, true, true), 'n', true)
+	end)
+end
+
+-- Yank to clipboard
+vim.keymap.set('v', '<Leader>y', '"+y')
 
 -- Clear Highlights
-keymap.set('n', '<A-SPACE>', ':nohlsearch<CR>')
+vim.keymap.set('n', '<A-SPACE>', ':nohlsearch<CR>')
 
 -- Scroll up and down
-keymap.set('', '<C-e>', '10<C-E>')
-keymap.set('', '<C-y>', '10<C-Y>')
-keymap.set('', '<A-j>', '5j')
-keymap.set('', '<A-k>', '5k')
+vim.keymap.set('', '<C-e>', '10<C-E>')
+vim.keymap.set('', '<C-y>', '10<C-Y>')
+vim.keymap.set('', '<A-j>', '5j')
+vim.keymap.set('', '<A-k>', '5k')
 
-keymap.set('n', '<C-k>', ':wincmd k<CR>')
-keymap.set('n', '<C-j>', ':wincmd j<CR>')
-keymap.set('n', '<C-h>', ':wincmd h<CR>')
-keymap.set('n', '<C-l>', ':wincmd l<CR>')
-
--- Resize vim panes
-keymap.set('n', '<C-W>h', ':vertical resize -10<CR>')
-keymap.set('n', '<C-W>j', ':horizontal resize -10<CR>')
-keymap.set('n', '<C-W>k', ':horizontal resize +10<CR>')
-keymap.set('n', '<C-W>l', ':vertical resize +10<CR>')
+-- Panes
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>')
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>')
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>')
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>')
+vim.keymap.set('n', '<Leader>h', ':vertical resize -15<CR>')
+vim.keymap.set('n', '<Leader>j', ':horizontal resize -15<CR>')
+vim.keymap.set('n', '<Leader>k', ':horizontal resize +15<CR>')
+vim.keymap.set('n', '<Leader>l', ':vertical resize +15<CR>')
+vim.keymap.set('n', '<Leader>v', ':vs<CR>')
+vim.keymap.set('n', '<Leader>s', ':split<CR>')
+vim.keymap.set('n', '<Leader>q', ':q<CR>')
 
 -- NeoTree
-keymap.set('n', '<A-n>', ':NeoTreeFocusToggle<CR>')
-keymap.set('n', '<A-f>', ':NeoTreeFloatToggle<CR>')
+vim.keymap.set('n', '<A-n>', ':NeoTreeFocusToggle<CR>')
+vim.keymap.set('n', '<A-f>', ':NeoTreeFloatToggle<CR>')
 
 -- Barbar
-keymap.set('', '<A-,>', ':BufferPrevious<CR>')
-keymap.set('', '<A-;>', ':BufferNext<CR>')
-keymap.set('', '<A-c>', ':BufferClose<CR>')
-keymap.set('', '<AS-c>', ':BufferCloseAllButCurrent<CR>')
-keymap.set('n', '<AS-,>', ':BufferMovePrevious<CR>')
-keymap.set('n', '<AS-;>', ':BufferMoveNext<CR>')
+vim.keymap.set('', '<A-,>', ':BufferPrevious<CR>')
+vim.keymap.set('', '<A-;>', ':BufferNext<CR>')
+vim.keymap.set('', '<A-c>', ':BufferClose<CR>')
+vim.keymap.set('', '<AS-c>', ':BufferCloseAllButCurrent<CR>')
+vim.keymap.set('n', '<AS-,>', ':BufferMovePrevious<CR>')
+vim.keymap.set('n', '<AS-;>', ':BufferMoveNext<CR>')
 
 -- Telescope
-keymap.set('n', '<C-P>', ':Telescope find_files<CR>')
-keymap.set('n', '<SPACE>fh', ':Telescope live_grep<CR>')
-keymap.set('n', '<SPACE><SPACE>', ':Telescope oldfiles<CR>')
+vim.keymap.set('n', '<C-P>', ':Telescope find_files<CR>')
+vim.keymap.set('n', '<SPACE>fh', ':Telescope live_grep<CR>')
+vim.keymap.set('n', '<SPACE><SPACE>', ':Telescope oldfiles<CR>')
 
 -- Hop
-keymap.set('n', 'S', ':HopChar1<CR>')
-keymap.set('n', 's', ':HopChar2<CR>')
+vim.keymap.set('n', 'S', ':HopChar1<CR>')
+vim.keymap.set('n', 's', ':HopChar2<CR>')
