@@ -5,6 +5,9 @@ return {
 
 	'lua_ls', -- lua
 
+	-- Web
+	{ server = 'emmet_ls', navic = false },
+
 	-- C
 	'clangd',
 	'ast_grep',

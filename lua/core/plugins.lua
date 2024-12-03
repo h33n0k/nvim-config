@@ -5,7 +5,7 @@ return {
 	'catppuccin/nvim',
 	'lukas-reineke/indent-blankline.nvim',
 	-- Syntax / Highlighting
-	'NvChad/nvim-colorizer.lua',
+	-- 'NvChad/nvim-colorizer.lua',
 	'elkowar/yuck.vim',
 	{ 'Fymyte/rasi.vim', ft = 'rasi' },
 	'nvim-treesitter/nvim-treesitter',
@@ -34,14 +34,14 @@ return {
 	'neovim/nvim-lspconfig',
 	'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
 	-- DAP
-	'mfussenegger/nvim-dap',
-	'theHamsta/nvim-dap-virtual-text',
-	{ 'rcarriga/nvim-dap-ui', requires = {
-		'nvim-neotest/nvim-nio' } },
-	'nvim-telescope/telescope-dap.nvim',
-	'mxsdev/nvim-dap-vscode-js',
-	{ 'microsoft/vscode-js-debug', opt = true,
-		run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out' },
+	-- 'mfussenegger/nvim-dap',
+	-- 'theHamsta/nvim-dap-virtual-text',
+	-- { 'rcarriga/nvim-dap-ui', requires = {
+	-- 	'nvim-neotest/nvim-nio' } },
+	-- 'nvim-telescope/telescope-dap.nvim',
+	-- 'mxsdev/nvim-dap-vscode-js',
+	-- { 'microsoft/vscode-js-debug', opt = true,
+	-- 	run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out' },
 	-- UI
 	'tpope/vim-fugitive',
 	'nvim-pack/nvim-spectre',
@@ -50,7 +50,6 @@ return {
 	'preservim/tagbar',
 	'akinsho/toggleterm.nvim',
 	'lewis6991/gitsigns.nvim',
-	'gelguy/wilder.nvim',
 	{ 'utilyre/barbecue.nvim', requires = {
 		'neovim/nvim-lspconfig',
 		'SmiteshP/nvim-navic',

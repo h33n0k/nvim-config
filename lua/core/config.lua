@@ -30,10 +30,9 @@ local configs = {
 	-- LSP / Completions
 	{ { 'cmp', 'luasnip', 'lsp-status', 'cmp_nvim_lsp', 'mason-lspconfig', 'lspconfig', 'mason' },
 		'completion' },
-	'lsp_lines',
 	-- DAP
-	{ { 'dap', 'dapui' },
-		'dap' },
+	-- { { 'dap', 'dapui' },
+	-- 	'dap' },
 	-- UI
 	'spectre',
 	'noice',
