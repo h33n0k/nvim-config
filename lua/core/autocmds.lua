@@ -2,12 +2,12 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 -- Automatically source and re-compile packer when writting plugins.lua
-local packer_group = augroup('Packer', { clear = true })
-autocmd('BufWritePost', {
-  command = 'source <afile> | PackerSync',
-  group = packer_group,
-  pattern = vim.fn.expand '$NVIM_DIR/lua/core/plugins.lua',
-})
+-- local packer_group = augroup('Packer', { clear = true })
+-- autocmd('BufWritePost', {
+--   command = 'source <afile> | PackerSync',
+--   group = packer_group,
+--   pattern = vim.fn.expand '$NVIM_DIR/lua/core/plugins.lua',
+-- })
 
 -- Remove whitespace on save
 autocmd('BufWritePre', {
