@@ -37,7 +37,6 @@ vim.opt.scrolloff = 5
 -- Memory, CPU
 vim.opt.hidden = true           -- Enable background buffers
 vim.opt.history = 100           -- Remember N lines in history
-vim.opt.lazyredraw = true       -- Faster scrolling
 vim.opt.synmaxcol = 240         -- Max column for syntax highlight
 vim.opt.updatetime = 10					-- ms to wait for trigger an event
 

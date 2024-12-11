@@ -42,18 +42,6 @@ for _, server in pairs(servers)  do
 			if setup.navic then
 				navic.attach(client, bufnr)
 			end
-			for _, map in pairs {
-				{ 'd', vim.diagnostic.open_float },
-				{ 'gr', require 'telescope.builtin'.lsp_references },
-				{ 'r', vim.lsp.buf.rename },
-				{ 'ca', vim.lsp.buf.code_action },
-				{ 'd', vim.lsp.buf.definition },
-				{ 'i', vim.lsp.buf.implementation },
-				{ 'l', vim.lsp.buf.hover },
-				{ 'd', function () vim.diagnostic.open_float(nil, { border = 'rounded' }) end }
-			} do
-				vim.keymap.set('n', prefix ..map[1], map[2], { buffer = bufnr })
-			end
 		end,
 		capabilities = capabilities,
 	})
