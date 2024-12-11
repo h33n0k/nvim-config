@@ -15,7 +15,7 @@ for _, m in pairs {
 	{ 'SignColumn', { fg = palette.sky, bg = nil, bold = false } },
 	{ 'VertSplit', { fg = palette.sky, bg = nil, bold = false } },
 	{ 'Visual', { fg = nil, bg = palette.base, bold = true } },
-	{ 'FloatBorder', { fg = palette.pink, bg = nil } },
+	{ 'FloatBorder', { fg = palette.sky, bg = nil } },
 	{ 'CmpBorder', { fg = palette.mauve, bg = nil, bold = true } },
 	{ 'CmpDocBorder', { fg = palette.pink, bg = nil, bold = true } },
 	{ 'CursorLine', { bg = palette.surface0 } },

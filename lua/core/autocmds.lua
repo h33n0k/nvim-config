@@ -4,7 +4,7 @@ local autocmd = vim.api.nvim_create_autocmd
 -- Remove whitespace on save
 autocmd('BufWritePre', {
   pattern = '',
-  command = ":%s/\\s\\+$//e"
+  command = ':%s/\\s\\+$//e'
 })
 
 -- Prevent auto commenting new line
@@ -41,3 +41,46 @@ for _, format in pairs({
 		command = 'setfiletype' ..format[2],
 	})
 end
+
+-- Close help buffer with q
+autocmd('Filetype', {
+	pattern = 'help',
+	callback = function ()
+		vim.api.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
+	end
+})
+
+-- Auto insert template in new files
+autocmd('BufNewFile', {
+  pattern = '*.sh',
+  callback = function()
+    vim.api.nvim_buf_set_lines(0, 0, 0, false, {
+			'#!/bin/bash',
+			''
+    })
+  end,
+})
+
+-- Auto format JSON files
+autocmd('BufWritePre', {
+  pattern = '*.json',
+  callback = function()
+    vim.cmd '%!jq .'
+  end,
+})
+
+-- Auto insert in terminal
+autocmd('TermOpen', {
+  pattern = '*',
+  command = 'startinsert'
+})
+
+-- Automaticaly ask to reload file when changed
+autocmd('FocusGained', {
+  command = 'checktime'
+})
+
+-- Set vertical cursor when exiting
+autocmd('VimLeave', {
+  command = 'set guicursor=a:ver25'
+})
