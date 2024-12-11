@@ -17,7 +17,10 @@ for _, m in pairs {
 	{ 'Visual', { fg = nil, bg = palette.base, bold = true } },
 	{ 'FloatBorder', { fg = palette.pink, bg = nil } },
 	{ 'CmpBorder', { fg = palette.mauve, bg = nil, bold = true } },
-	{ 'CmpDocBorder', { fg = palette.pink, bg = nil, bold = true } }
+	{ 'CmpDocBorder', { fg = palette.pink, bg = nil, bold = true } },
+	{ 'CursorLine', { bg = palette.surface0 } },
+	{ 'TSDefinition', { bg = palette.surface1, fg = palette.sapphire, bold = true } },
+	{ 'TSDefinitionUsage', { bg = palette.surface1, fg = palette.yellow, bold = true } }
 } do
 	vim.api.nvim_set_hl(0, m[1], m[2])
 end

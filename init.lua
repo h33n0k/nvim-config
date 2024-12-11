@@ -64,6 +64,13 @@ require 'packer'.startup(function(use)
 	-- use 'NvChad/nvim-colorizer.lua'
 	use 'elkowar/yuck.vim'
 	use { 'Fymyte/rasi.vim', ft = 'rasi' }
+
+	use {
+		'nvim-treesitter/nvim-treesitter-refactor',
+		after = 'nvim-treesitter',
+		requires = 'nvim-treesitter/nvim-treesitter'
+	}
+
 	use {
 		'nvim-treesitter/nvim-treesitter-textobjects',
 		after = 'nvim-treesitter',

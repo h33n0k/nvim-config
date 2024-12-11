@@ -36,21 +36,21 @@ require 'nvim-treesitter.configs'.setup {
 		},
 	},
 	refactor = {
-		smart_rename = {
+		smart_rename = { enable = false },
+		navigation = {
 			enable = true,
 			keymaps = {
-				smart_rename = 'grr',
-			},
-		},
-		navigation = {
-			enable = false,
-			keymaps = {
 				goto_definition = 'gnd',
-				list_definitions = 'gnD',
-				list_definitions_toc = 'gO',
-				goto_next_usage = '<a-*>',
-				goto_previous_usage = '<a-#>',
+				list_definitions = false,
+				list_definitions_toc = false,
+				goto_next_usage = '<C-*>',
+				goto_previous_usage = '<C-ù>'
 			}
+		},
+		highlight_current_scope = { enable = false },
+		highlight_definitions = {
+			enable = true,
+			clear_on_cursor_move = false
 		}
 	},
 	textobjects = {

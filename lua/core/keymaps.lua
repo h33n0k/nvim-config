@@ -49,10 +49,10 @@ vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { desc = 'Navigate top pane' })
 vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { desc = 'Navigate bottom pane' })
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { desc = 'Navigate left pane' })
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { desc = 'Navigate right pane' })
-vim.keymap.set('n', '<Leader>h', ':vertical resize -15<CR>', { desc = 'Shrink pane horizontaly' })
-vim.keymap.set('n', '<Leader>j', ':horizontal resize -5<CR>', { desc = 'Shrink pane verticaly' })
-vim.keymap.set('n', '<Leader>k', ':horizontal resize +5<CR>', { desc = 'Expand pane verticaly' })
-vim.keymap.set('n', '<Leader>l', ':vertical resize +15<CR>', { desc = 'Expand pane horizontaly' })
+vim.keymap.set('n', '<C-A-h>', ':vertical resize -15<CR>', { desc = 'Shrink pane horizontaly' })
+vim.keymap.set('n', '<C-A-j>', ':horizontal resize -5<CR>', { desc = 'Shrink pane verticaly' })
+vim.keymap.set('n', '<C-A-k>', ':horizontal resize +5<CR>', { desc = 'Expand pane verticaly' })
+vim.keymap.set('n', '<C-A-l>', ':vertical resize +15<CR>', { desc = 'Expand pane horizontaly' })
 vim.keymap.set('n', '<Leader>v', ':vs<CR>', { desc = 'Vertical split' })
 vim.keymap.set('n', '<Leader>s', ':split<CR>', { desc = 'Horizontal split' })
 vim.keymap.set('n', '<Leader>q', ':q<CR>', { desc = 'Quit buffer' })
@@ -146,9 +146,12 @@ for _, config in pairs {
 	{ 'gitsigns', function (modules)
 		local prefix = '<Leader>g'
 		return {
-			{ 'n', prefix ..'a', modules[1].preview_hunk, { desc = 'Preview Hunk' } },
-			{ 'n', prefix ..'i', modules[1].preview_hunk_inline, { desc = 'Preview Inline Hunk' } },
-			{ 'n', prefix ..'b', function () modules[1].blame_line { full = true } end, { desc = 'Toggle Line Blame' } }
+			{ 'n', prefix ..'ah', modules[1].preview_hunk, { desc = 'Preview hunk' } },
+			{ 'n', prefix ..'ih', modules[1].preview_hunk_inline, { desc = 'Preview Inline hunk' } },
+			{ 'n', prefix ..'b', function () modules[1].blame_line { full = true } end, { desc = 'Toggle Line Blame' } },
+			{ 'n', prefix ..'is', modules[1].stage_hunk, { desc = 'Stage hunk' } },
+			{ 'n', prefix ..'ir', modules[1].reset_hunk, { desc = 'Reset hunk' } },
+			{ 'n', prefix ..'d', modules[1].diffthis, { desc = 'Diff this' } }
 		}
 	end }
 } do
