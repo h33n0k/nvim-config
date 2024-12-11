@@ -18,7 +18,12 @@ cmp.setup {
 	window = {
 		completion = {
 			border = 'rounded',
-			side_padding = 1
+			side_padding = 1,
+			winhighlight = 'FloatBorder:CmpBorder,Normal:CmpCompletionBackground'
+		},
+		documentation = {
+			border = 'rounded',
+			winhighlight = 'FloatBorder:CmpDocBorder,Normal:CmpDocBackground'
 		}
 	}
 }
