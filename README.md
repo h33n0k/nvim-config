@@ -20,10 +20,6 @@ mv ~/.config/nvim/ ~/.config/nvim.backup/
 # clone repository
 git clone https://github.com/h33n0k/nvim-config.git ~/.config/nvim/
 ```
-```bash
-# Sync plugins
-:PackerSync
-```
 
 #### Windows :
 ```bash
@@ -33,10 +29,6 @@ mv $env:LOCALAPPDATA/nvim/ $env:LOCALAPPDATA/nvim.backup/
 ```bash
 # clone repository
 git clone https://github.com/h33n0k/nvim-config.git $env:LOCALAPPDATA/nvim/
-```
-```bash
-# Sync plugins
-:PackerSync
 ```
 
 * * *
