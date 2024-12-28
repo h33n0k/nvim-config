@@ -14,7 +14,7 @@ for _, m in pairs {
 	{ 'FoldColumn', { fg = palette.blue, bg = nil, bold = false } },
 	{ 'SignColumn', { fg = palette.sky, bg = nil, bold = false } },
 	{ 'VertSplit', { fg = palette.sky, bg = nil, bold = false } },
-	{ 'Visual', { fg = nil, bg = palette.base, bold = true } },
+	{ 'Visual', { fg = nil, bg = palette.surface1, bold = true } },
 	{ 'FloatBorder', { fg = palette.sky, bg = nil } },
 	{ 'CmpBorder', { fg = palette.mauve, bg = nil, bold = true } },
 	{ 'CmpDocBorder', { fg = palette.pink, bg = nil, bold = true } },

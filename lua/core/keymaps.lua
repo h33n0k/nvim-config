@@ -146,12 +146,18 @@ for _, config in pairs {
 	{ 'gitsigns', function (modules)
 		local prefix = '<Leader>g'
 		return {
-			{ 'n', prefix ..'ah', modules[1].preview_hunk, { desc = 'Preview hunk' } },
-			{ 'n', prefix ..'ih', modules[1].preview_hunk_inline, { desc = 'Preview Inline hunk' } },
+			{ 'n', prefix ..'w', ':Gwrite<CR>', { desc = 'Add file' } },
+			{ 'n', prefix ..'h', modules[1].preview_hunk, { desc = 'Preview hunk' } },
+			{ 'n', prefix ..'i', modules[1].preview_hunk_inline, { desc = 'Preview Inline hunk' } },
 			{ 'n', prefix ..'b', function () modules[1].blame_line { full = true } end, { desc = 'Toggle Line Blame' } },
-			{ 'n', prefix ..'is', modules[1].stage_hunk, { desc = 'Stage hunk' } },
-			{ 'n', prefix ..'ir', modules[1].reset_hunk, { desc = 'Reset hunk' } },
-			{ 'n', prefix ..'d', modules[1].diffthis, { desc = 'Diff this' } }
+			{ 'n', prefix ..'s', modules[1].stage_hunk, { desc = 'Stage hunk' } },
+			{ 'n', prefix ..'r', modules[1].reset_hunk, { desc = 'Reset hunk' } },
+			{ 'n', prefix ..'dv', ':Gvdiffsplit<CR>', { desc = 'Vertical Diff' } },
+			{ 'n', prefix ..'ds', ':Ghdiffsplit<CR>', { desc = 'Horizontal Diff' } },
+			{ 'n', prefix ..'s', modules[1].stage_hunk, { desc = 'Stage hunk' } },
+			{ 'n', prefix ..'r', modules[1].reset_hunk, { desc = 'Reset hunk' } },
+			{ 'v', prefix ..'s', function () modules[1].stage_hunk({ vim.fn.line('v'), vim.fn.line('.') }) end, { desc = 'Stage selection' } },
+			{ 'v', prefix ..'r', function () modules[1].reset_hunk({ vim.fn.line('v'), vim.fn.line('.') }) end, { desc = 'Reset selection' } }
 		}
 	end }
 } do
