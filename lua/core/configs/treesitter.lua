@@ -156,5 +156,5 @@ vim.keymap.set({ 'n', 'x', 'o' }, '[g', prev_hunk_repeat)
 
 -- LSP diagnostics
 local next_diagnostic_repeat, prev_diagnostic_repeat = ts_repeat_move.make_repeatable_move_pair(vim.diagnostic.goto_next, vim.diagnostic.goto_prev)
-vim.keymap.set({ 'n', 'x', 'o' }, ']e', next_diagnostic_repeat)
-vim.keymap.set({ 'n', 'x', 'o' }, '[e', prev_diagnostic_repeat)
+vim.keymap.set({ 'n', 'x', 'o' }, ']d', next_diagnostic_repeat)
+vim.keymap.set({ 'n', 'x', 'o' }, '[d', prev_diagnostic_repeat)
