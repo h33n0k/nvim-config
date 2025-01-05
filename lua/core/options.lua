@@ -4,7 +4,7 @@ vim.opt.swapfile = true													-- Use swapfile
 vim.opt.completeopt = 'menuone,noinsert,noselect'	-- Autocomplete options
 
 -- Neovim UI
-vim.opt.signcolumn = 'auto:3'
+vim.opt.signcolumn = 'yes:2'
 vim.opt.number = true						-- Show line number
 vim.opt.relativenumber = true		-- Show relative line numbers
 vim.opt.numberwidth = 3
