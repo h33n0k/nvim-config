@@ -33,6 +33,9 @@ for _, key in pairs({ 'p', 'P' }) do -- paste from clipboard
 	end)
 end
 
+-- Select inner line
+vim.keymap.set('n', '<A-v>', '^vg_', { noremap = true })
+
 -- Clear Highlights
 vim.keymap.set('n', '<A-SPACE>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 

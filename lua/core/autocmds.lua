@@ -61,14 +61,6 @@ autocmd('BufNewFile', {
   end,
 })
 
--- Auto format JSON files
-autocmd('BufWritePre', {
-  pattern = '*.json',
-  callback = function()
-    vim.cmd '%!jq .'
-  end,
-})
-
 -- Auto insert in terminal
 autocmd('TermOpen', {
   pattern = '*',
