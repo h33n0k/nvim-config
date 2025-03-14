@@ -86,6 +86,9 @@ require 'nvim-treesitter.configs'.setup {
 				-- Class
 				['ac'] = { query = '@class.outer', desc = 'Select outer part of a class' },
 				['ic'] = { query = '@class.inner', desc = 'Select inner part of a class' },
+				-- Comment
+				['ah'] = { query = '@comment.outer', desc = 'Select outer part of a class' },
+				['ih'] = { query = '@comment.inner', desc = 'Select outer part of a class' },
 			}
 		},
 		swap = {
@@ -111,6 +114,7 @@ require 'nvim-treesitter.configs'.setup {
 				[']i'] = { query = '@conditional.outer', desc = 'Next conditional start' },
 				[']l'] = { query = '@loop.outer', desc = 'Next loop start' },
 				[']z'] = { query = '@fold', query_group = 'folds', desc = 'Next fold' },
+				[']h'] = { query = '@comment.outer', desc = 'Next comment start' },
 			},
 			goto_next_end = {
 				[']F'] = { query = '@call.outer', desc = 'Next function call end' },
@@ -118,6 +122,7 @@ require 'nvim-treesitter.configs'.setup {
 				[']C'] = { query = '@class.outer', desc = 'Next class end' },
 				[']I'] = { query = '@conditional.outer', desc = 'Next conditional end' },
 				[']L'] = { query = '@loop.outer', desc = 'Next loop end' },
+				[']H'] = { query = '@comment.outer', desc = 'Next comment end' },
 			},
 			goto_previous_start = {
 				['[f'] = { query = '@call.outer', desc = 'Prev function call start' },
@@ -125,6 +130,7 @@ require 'nvim-treesitter.configs'.setup {
 				['[c'] = { query = '@class.outer', desc = 'Prev class start' },
 				['[i'] = { query = '@conditional.outer', desc = 'Prev conditional start' },
 				['[l'] = { query = '@loop.outer', desc = 'Prev loop start' },
+				['[h'] = { query = '@comment.outer', desc = 'Prev comment start' },
 			},
 			goto_previous_end = {
 				['[F'] = { query = '@call.outer', desc = 'Prev function call end' },
@@ -132,6 +138,7 @@ require 'nvim-treesitter.configs'.setup {
 				['[C'] = { query = '@class.outer', desc = 'Prev class end' },
 				['[I'] = { query = '@conditional.outer', desc = 'Prev conditional end' },
 				['[L'] = { query = '@loop.outer', desc = 'Prev loop end' },
+				['[H'] = { query = '@comment.outer', desc = 'Prev comment end' },
 			},
 		}
 	}
