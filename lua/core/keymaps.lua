@@ -68,7 +68,7 @@ for _, config in pairs {
 			{ 'n', prefix ..'gr', require 'telescope.builtin'.lsp_references, { desc = 'Browse references' } },
 			{ 'n', prefix ..'r', vim.lsp.buf.rename, { desc = 'LSP rename' } },
 			{ 'n', prefix ..'ca', vim.lsp.buf.code_action, { desc = 'Code action' } },
-			{ 'n', prefix ..'d', vim.lsp.buf.definition, { desc = 'See definition' } },
+			{ 'n', prefix ..'D', vim.lsp.buf.definition, { desc = 'See definition' } },
 			{ 'n', prefix ..'i', vim.lsp.buf.implementation, { desc = 'Goto implementation' } },
 			{ 'n', prefix ..'l', vim.lsp.buf.hover, { desc = 'LSP documentation' } },
 			{ 'n', prefix ..'d', function () vim.diagnostic.open_float(nil, { border = 'rounded' }) end, { desc = 'Open floating diagnostic' } }
