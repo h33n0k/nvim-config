@@ -58,7 +58,12 @@ vim.keymap.set('n', '<C-A-k>', ':horizontal resize +5<CR>', { desc = 'Expand pan
 vim.keymap.set('n', '<C-A-l>', ':vertical resize +15<CR>', { desc = 'Expand pane horizontaly' })
 vim.keymap.set('n', '<Leader>v', ':vs<CR>', { desc = 'Vertical split' })
 vim.keymap.set('n', '<Leader>s', ':split<CR>', { desc = 'Horizontal split' })
+
+-- Buffers
 vim.keymap.set('n', '<Leader>q', ':q<CR>', { desc = 'Quit buffer' })
+vim.keymap.set('n', '<Leader>Q', ':qall<CR>', { desc = 'Quit buffer' })
+vim.keymap.set('n', '<Leader>w', ':w<CR>', { desc = 'Write buffer' })
+vim.keymap.set('n', '<Leader>e', ':e!<CR>', { desc = 'Reload buffer' })
 
 -- Plugins Keymaps
 for _, config in pairs {
