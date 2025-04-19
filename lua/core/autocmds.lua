@@ -56,15 +56,22 @@ autocmd('Filetype', {
 })
 
 -- Auto insert template in new files
-autocmd('BufNewFile', {
-  pattern = '*.sh',
-  callback = function()
-    vim.api.nvim_buf_set_lines(0, 0, 0, false, {
-			'#!/bin/bash',
-			''
-    })
-  end,
-})
+for _, template in pairs({
+	{ { '*.sh' }, {
+		'#!/bin/bash',
+		''
+	} },
+	{ { '*.yml', '.yaml' }, {
+		'---',
+	} }
+}) do
+	autocmd('BufNewFile', {
+		pattern = template[1],
+		callback = function()
+			vim.api.nvim_buf_set_lines(0, 0, 0, false, template[2])
+		end,
+	})
+end
 
 -- Auto insert in terminal
 autocmd('TermOpen', {
