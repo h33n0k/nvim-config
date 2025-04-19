@@ -37,11 +37,13 @@ autocmd('Filetype', {
 
 -- Set correct file formats
 for _, format in pairs({
-	{ '*.zsh', 'bash' }
+	{ { '*.zsh', '.zshrc', '.zshenv', '.zprofile' }, 'bash' }
 }) do
 	autocmd({ 'BufRead', 'BufNewFile' }, {
 		pattern = format[1],
-		command = 'setfiletype' ..format[2],
+		callback = function ()
+			vim.bo.filetype = format[2]
+		end
 	})
 end
 
