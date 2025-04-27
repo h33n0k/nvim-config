@@ -68,14 +68,15 @@ for _, config in pairs {
 			{ 'n', prefix ..'gr', require 'telescope.builtin'.lsp_references, { desc = 'Browse references' } },
 			{ 'n', prefix ..'r', vim.lsp.buf.rename, { desc = 'LSP rename' } },
 			{ 'n', prefix ..'ca', vim.lsp.buf.code_action, { desc = 'Code action' } },
-			{ 'n', prefix ..'D', vim.lsp.buf.definition, { desc = 'See definition' } },
+			{ 'n', prefix ..'d', vim.lsp.buf.definition, { desc = 'See definition' } },
 			{ 'n', prefix ..'i', vim.lsp.buf.implementation, { desc = 'Goto implementation' } },
 			{ 'n', prefix ..'l', vim.lsp.buf.hover, { desc = 'LSP documentation' } },
 			{ 'n', prefix ..'d', function () vim.diagnostic.open_float(nil, { border = 'rounded' }) end, { desc = 'Open floating diagnostic' } }
 		}
 	end },
 	{ 'barbar', function()
-		return {
+
+		local maps = {
 			{ 'n', '<A-,>', ':BufferPrevious<CR>', { desc = 'Go to previous tab' } },
 			{ 'n', '<A-;>', ':BufferNext<CR>', { desc = 'Go to next tab' } },
 			{ 'n', '<A-c>', ':BufferClose<CR>', { desc = 'Close tab' } },
@@ -83,6 +84,17 @@ for _, config in pairs {
 			{ 'n', '<AS-,>', ':BufferMovePrevious<CR>', { desc = 'Move tab left' } },
 			{ 'n', '<AS-;>', ':BufferMoveNext<CR>', { desc = 'Move tab right' } }
 		}
+
+		-- Use 1-0 from azerty keyboard to goto given tab
+		for i, key in pairs({ 'à', '&', 'é', '"', "'", '(', '-', 'è', '_', 'ç' }) do
+			local index = i - 1
+			table.insert(
+				maps,
+				{ 'n', '<A-'..key..'>', ':BufferGoto '..index..'<CR>', { desc = 'Goto tab '..index } }
+			)
+		end
+
+		return maps
 	end },
 	{ 'telescope', function()
 		return {
