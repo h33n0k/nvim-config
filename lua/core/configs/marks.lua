@@ -8,10 +8,11 @@ local mappings = {
 	delete_buf = '<Leader>mL',
 }
 
-for i, key in pairs({ 'à', '&', 'é', '"', "'", '(', '-', 'è', '_', 'ç' }) do
-	mappings['next_bookmark'..(i - 1)] = '<Leader>'..key
-	mappings['set_bookmark'..(i - 1)] = '<Leader><Leader>'..key
-	mappings['delete_bookmark'..(i - 1)] = '<Leader>md'..key
+for i = 1, 9 do
+	key = (i - 1)
+	mappings['next_bookmark'..key] = '<Leader>'..key
+	mappings['set_bookmark'..key] = '<Leader><Leader>'..key
+	mappings['delete_bookmark'..key] = '<Leader>md'..key
 end
 
 require 'marks'.setup {
@@ -19,4 +20,4 @@ require 'marks'.setup {
 	mappings = mappings
 }
 
-vim.cmd [[ au CursorHold * lua require'marks'.refresh() ]]
+vim.cmd [[ au CursorHold * lua require 'marks'.refresh() ]]

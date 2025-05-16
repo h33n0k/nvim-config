@@ -1,12 +1,6 @@
 -- Exit Terminal Mode
 vim.keymap.set('t', '<A-ESC>', '<C-\\><C-N>')
 
--- Remap numbers for AZERTY keyboards
-for i, key in pairs({ 'à', '&', 'é', '"', "'", '(', '-', 'è', '_', 'ç' }) do
-	vim.keymap.set('n', key, ''..(i - 1), { noremap = true, silent = true })
-	vim.keymap.set('n', ''..(i - 1), key, { noremap = true, silent = true })
-end
-
 -- Clipboard
 vim.keymap.set('', '<Leader>y', '"+y', { noremap = true, desc = 'Copy to system clipboard' }) -- yank to clipboard
 for _, key in pairs({ 'p', 'P' }) do -- remap paste command
