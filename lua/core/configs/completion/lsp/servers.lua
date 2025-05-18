@@ -3,6 +3,9 @@ return {
 	'bashls',
 	'awk_ls',
 
+	-- Python
+	'pylsp',
+
 	'lua_ls', -- lua
 
 	-- Web
