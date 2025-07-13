@@ -1,4 +1,4 @@
-local servers = require 'core.configs.completion.lsp.servers'
+local servers = require 'core.configs.mason.lsp.servers'
 
 local navic = require 'nvim-navic'
 local lspconfig = require 'lspconfig'

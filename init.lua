@@ -125,7 +125,7 @@ require 'packer'.startup(function(use)
 		'williamboman/mason-lspconfig.nvim',
 		'neovim/nvim-lspconfig'
 		},
-		config = function() require 'core.configs.completion' end
+		config = function() require 'core.mason.completion' end
 	}
 
 	-- UI
