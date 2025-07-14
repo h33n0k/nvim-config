@@ -19,7 +19,7 @@ dashboard.section.buttons.val = {
 	dashboard.button('r', '󱫓 Recent Files', ':Telescope oldfiles<CR>'),
 	dashboard.button('u', '󰚰 Update Plugins', ':PackerSync<CR>'),
 	dashboard.button('h', '󰘥 Help', ':help<CR>'),
-	dashboard.button('q', '󰿅 Quit Neovim', ':qa<CR>')
+	dashboard.button('q', '󰿅 Quit Neovim', ':qa<CR>'),
 }
 
 dashboard.section.footer.val = require 'alpha.fortune'

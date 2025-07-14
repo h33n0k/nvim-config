@@ -1,13 +1,13 @@
-require 'nvim-autopairs'.setup{
+require('nvim-autopairs').setup {
 	check_ts = true,
 	ts_config = {
 		lua = { 'string', 'source' },
-		javascript = { 'string', 'template_string' }
+		javascript = { 'string', 'template_string' },
 	},
 	disable_filetype = { 'TelescopePrompt' },
 	fast_wrap = {
 		map = '<M-e>',
-		chars = { '{', '[', '(', '"', "'" },
+		chars = { '{', '[', '(', '"', '\'' },
 		pattern = [=[[%'%'%>%]%)%}%,]]=],
 		end_key = '$',
 		before_key = 'h',
@@ -16,8 +16,8 @@ require 'nvim-autopairs'.setup{
 		keys = 'hjkl',
 		manual_position = true,
 		highlight = 'Search',
-		highlight_grey='Comment'
-	}
+		highlight_grey = 'Comment',
+	},
 }
 
 -- local cmp_autopairs = require 'nvim-autopairs.completion.cmp'

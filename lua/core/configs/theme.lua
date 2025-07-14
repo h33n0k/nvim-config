@@ -1,10 +1,10 @@
 local palette = require 'core.colors'
-require'catppuccin'.setup {
+require('catppuccin').setup {
 	flavour = 'macchiato',
-	transparent_background = true
+	transparent_background = true,
 }
 
-vim.cmd('colorscheme catppuccin')
+vim.cmd 'colorscheme catppuccin'
 
 for _, m in pairs {
 	{ 'Normal', { bg = nil, ctermgb = nil } },
@@ -20,7 +20,7 @@ for _, m in pairs {
 	{ 'CmpDocBorder', { fg = palette.pink, bg = nil, bold = true } },
 	{ 'CursorLine', { bg = palette.surface0 } },
 	{ 'TSDefinition', { bg = palette.surface1, fg = palette.sapphire, bold = true } },
-	{ 'TSDefinitionUsage', { bg = palette.surface1, fg = palette.yellow, bold = true } }
+	{ 'TSDefinitionUsage', { bg = palette.surface1, fg = palette.yellow, bold = true } },
 } do
 	vim.api.nvim_set_hl(0, m[1], m[2])
 end

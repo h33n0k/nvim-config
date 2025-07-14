@@ -3,13 +3,10 @@ local cmp = require 'cmp'
 cmp.setup {
 	snippet = {
 		expand = function(args)
-			require 'luasnip'.lsp_expand(args.body)
-		end
+			require('luasnip').lsp_expand(args.body)
+		end,
 	},
-	sources = cmp.config.sources(
-		{ { name = 'nvim_lsp' }, { name = 'luasnip' } },
-		{ { name = 'buffer' } }
-	),
+	sources = cmp.config.sources({ { name = 'nvim_lsp' }, { name = 'luasnip' } }, { { name = 'buffer' } }),
 	mapping = cmp.mapping.preset.insert {
 		['<C-e>'] = cmp.mapping.abort(),
 		['<CR>'] = cmp.mapping.confirm { select = true },
@@ -19,11 +16,11 @@ cmp.setup {
 		completion = {
 			border = 'rounded',
 			side_padding = 1,
-			winhighlight = 'FloatBorder:CmpBorder,Normal:CmpCompletionBackground'
+			winhighlight = 'FloatBorder:CmpBorder,Normal:CmpCompletionBackground',
 		},
 		documentation = {
 			border = 'rounded',
-			winhighlight = 'FloatBorder:CmpDocBorder,Normal:CmpDocBackground'
-		}
-	}
+			winhighlight = 'FloatBorder:CmpDocBorder,Normal:CmpDocBackground',
+		},
+	},
 }
