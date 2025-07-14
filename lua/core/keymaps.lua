@@ -3,6 +3,10 @@ vim.keymap.set('t', '<A-ESC>', '<C-\\><C-N>')
 
 -- Clipboard
 vim.keymap.set('', '<Leader>y', '"+y', { noremap = true, desc = 'Copy to system clipboard' }) -- yank to clipboard
+vim.keymap.set('n', 'Y', 'y$', { desc = 'Yank to end of line' })
+vim.keymap.set('x', '<A-p>', '"_dP', { desc = 'Paste without yanking' })
+vim.keymap.set({ 'n', 'v' }, '<A-d>', '"_d', { desc = 'Delete without yanking' })
+
 for _, key in pairs { 'p', 'P' } do -- remap paste command
 	vim.keymap.set({ 'n', 'v' }, key, function()
 		local count = vim.v.count1
@@ -32,14 +36,15 @@ vim.keymap.set('n', '<A-v>', '^vg_', { noremap = true })
 
 -- Clear Highlights
 vim.keymap.set('n', '<A-SPACE>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
+vim.keymap.set('n', '<leader>ff', ':find ', { desc = 'Find file' })
 
 -- Scroll up and down
 vim.keymap.set('', '<C-e>', '10<C-E>', { desc = 'Scroll page down' })
 vim.keymap.set('', '<C-y>', '10<C-Y>', { desc = 'Scroll page up' })
-vim.keymap.set('', '<A-h>', '5h')
-vim.keymap.set('', '<A-l>', '5l')
-vim.keymap.set('', '<A-j>', '5j')
-vim.keymap.set('', '<A-k>', '5k')
+vim.keymap.set('', '<A-h>', '5h', { desc = 'Move 5 left' })
+vim.keymap.set('', '<A-l>', '5l', { desc = 'Move 5 right' })
+vim.keymap.set('', '<A-j>', '5j', { desc = 'Move 5 down' })
+vim.keymap.set('', '<A-k>', '5k', { desc = 'Move 5 up' })
 
 -- Panes
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { desc = 'Navigate top pane' })
@@ -53,11 +58,24 @@ vim.keymap.set('n', '<C-A-l>', ':vertical resize +15<CR>', { desc = 'Expand pane
 vim.keymap.set('n', '<Leader>v', ':vs<CR>', { desc = 'Vertical split' })
 vim.keymap.set('n', '<Leader>s', ':split<CR>', { desc = 'Horizontal split' })
 
+-- Tabs
+vim.api.nvim_create_autocmd('VimEnter', {
+	callback = function()
+		vim.keymap.set('n', '<A-,>', ':BufferPrevious<CR>', { noremap = true, silent = true, desc = 'Previous buffer' })
+		vim.keymap.set('n', '<A-;>', ':BufferNext<CR>', { noremap = true, silent = true, desc = 'Next buffer' })
+		vim.keymap.set('n', '<A-c>', ':BufferClose<CR>', { desc = 'Close tab' })
+		vim.keymap.set('n', '<AS-c>', ':BufferCloseAllButCurrent<CR>', { desc = 'Close all other tabs' })
+		vim.keymap.set('n', '<AS-;>;', ':BufferMoveNext<CR>', { desc = 'Move tab right' })
+		vim.keymap.set('n', '<AS-,>', ':BufferMovePrevious<CR>', { desc = 'Move tab left' })
+	end,
+})
+
 -- Buffers
 vim.keymap.set('n', '<Leader>q', ':q<CR>', { desc = 'Quit buffer' })
-vim.keymap.set('n', '<Leader>Q', ':qall<CR>', { desc = 'Quit buffer' })
+vim.keymap.set('n', '<Leader>Q', ':qall<CR>', { desc = 'Quit all buffers' })
 vim.keymap.set('n', '<Leader>w', ':w<CR>', { desc = 'Write buffer' })
-vim.keymap.set('n', '<Leader>e', ':e!<CR>', { desc = 'Reload buffer' })
+vim.keymap.set('n', '<Leader>x', ':wqa<CR>', { desc = 'Write and quit all buffers' })
+vim.keymap.set('n', '<Leader>R', ':e!<CR>', { desc = 'Reload buffer' })
 
 -- Plugins Keymaps
 for _, config in pairs {
@@ -80,19 +98,6 @@ for _, config in pairs {
 					end,
 					{ desc = 'Open floating diagnostic' },
 				},
-			}
-		end,
-	},
-	{
-		'barbar',
-		function()
-			return {
-				{ 'n', '<A-,>', ':BufferPrevious<CR>', { desc = 'Go to previous tab' } },
-				{ 'n', '<A-;>', ':BufferNext<CR>', { desc = 'Go to next tab' } },
-				{ 'n', '<A-c>', ':BufferClose<CR>', { desc = 'Close tab' } },
-				{ 'n', '<AS-c>', ':BufferCloseAllButCurrent<CR>', { desc = 'Close all other tabs' } },
-				{ 'n', '<AS-,>', ':BufferMovePrevious<CR>', { desc = 'Move tab left' } },
-				{ 'n', '<AS-;>', ':BufferMoveNext<CR>', { desc = 'Move tab right' } },
 			}
 		end,
 	},
