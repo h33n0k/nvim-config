@@ -1,11 +1,11 @@
-require 'colorizer'.setup {
+require('colorizer').setup {
 	user_default_options = {
 		always_update = true,
 		tailwind = true,
 		sass = {
 			enable = true,
-			parsers = { 'css' }
-		}
+			parsers = { 'css' },
+		},
 	},
 	filetypes = {
 		css = {
@@ -24,5 +24,5 @@ require 'colorizer'.setup {
 		json = { names = false },
 		mason = { names = false },
 		'*',
-	}
+	},
 }

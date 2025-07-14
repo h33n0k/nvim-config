@@ -1,6 +1,6 @@
 local palette = require 'core.colors'
 
-require 'barbar'.setup {
+require('barbar').setup {
 	auto_hide = true,
 	animation = false,
 	no_name_title = nil,
@@ -8,18 +8,18 @@ require 'barbar'.setup {
 	minimum_length = 0,
 	focus_on_close = 'right',
 	insert_at_end = true,
-  insert_at_start = false,
+	insert_at_start = false,
 	icons = {
-		separator = {left = '', right = ''},
+		separator = { left = '', right = '' },
 		separator_at_end = false,
 		filetype = {
 			enabled = true,
 			custom_colors = true,
-		}
+		},
 	},
 	sidebar_filetypes = {
-		['neo-tree'] = { event = 'BufWipeout' }
-	}
+		['neo-tree'] = { event = 'BufWipeout' },
+	},
 }
 
 local currentColor = palette.sapphire
@@ -30,7 +30,7 @@ local status = {
 	'Alternate',
 	'Current',
 	'Inactive',
-	'Visible'
+	'Visible',
 }
 
 local parts = {
@@ -47,11 +47,10 @@ local parts = {
 	'Sign',
 	'SignRight',
 	'Target',
-	'WARN'
+	'WARN',
 }
 
-for _, s  in pairs(status) do
-
+for _, s in pairs(status) do
 	vim.cmd(string.format('hi Buffer%s guibg=default', s))
 	if s == 'Current' then
 		vim.cmd(string.format('hi Buffer%s guifg=%s', s, currentColor))

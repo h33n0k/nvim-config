@@ -3,7 +3,7 @@ return {
 		'prettier',
 		'stylua',
 		'isort',
-		'black'
+		'black',
 	},
 	lsp = {
 		-- Bash
@@ -24,6 +24,6 @@ return {
 
 		-- Typescript
 		'biome',
-		'ts_ls'
-	}
+		'ts_ls',
+	},
 }

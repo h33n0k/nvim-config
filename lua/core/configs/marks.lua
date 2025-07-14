@@ -10,14 +10,14 @@ local mappings = {
 
 for i = 1, 9 do
 	key = (i - 1)
-	mappings['next_bookmark'..key] = '<Leader>'..key
-	mappings['set_bookmark'..key] = '<Leader><Leader>'..key
-	mappings['delete_bookmark'..key] = '<Leader>md'..key
+	mappings['next_bookmark' .. key] = '<Leader>' .. key
+	mappings['set_bookmark' .. key] = '<Leader><Leader>' .. key
+	mappings['delete_bookmark' .. key] = '<Leader>md' .. key
 end
 
-require 'marks'.setup {
+require('marks').setup {
 	cyclic = true,
-	mappings = mappings
+	mappings = mappings,
 }
 
 vim.cmd [[ au CursorHold * lua require 'marks'.refresh() ]]

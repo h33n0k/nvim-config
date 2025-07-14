@@ -1,4 +1,4 @@
-require 'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
 	ignore_install = {},
 	auto_install = true,
 	modules = {},
@@ -16,7 +16,7 @@ require 'nvim-treesitter.configs'.setup {
 		'tsx',
 		'typescript',
 		'rust',
-		'php'
+		'php',
 	},
 	sync_install = false,
 	autopairs = { enable = true },
@@ -44,14 +44,14 @@ require 'nvim-treesitter.configs'.setup {
 				list_definitions = false,
 				list_definitions_toc = false,
 				goto_next_usage = '<C-*>',
-				goto_previous_usage = '<C-ù>'
-			}
+				goto_previous_usage = '<C-ù>',
+			},
 		},
 		highlight_current_scope = { enable = false },
 		highlight_definitions = {
 			enable = true,
-			clear_on_cursor_move = false
-		}
+			clear_on_cursor_move = false,
+		},
 	},
 	textobjects = {
 		select = {
@@ -89,7 +89,7 @@ require 'nvim-treesitter.configs'.setup {
 				-- Comment
 				['ah'] = { query = '@comment.outer', desc = 'Select outer part of a class' },
 				['ih'] = { query = '@comment.inner', desc = 'Select outer part of a class' },
-			}
+			},
 		},
 		swap = {
 			enable = true,
@@ -140,8 +140,8 @@ require 'nvim-treesitter.configs'.setup {
 				['[L'] = { query = '@loop.outer', desc = 'Prev loop end' },
 				['[H'] = { query = '@comment.outer', desc = 'Prev comment end' },
 			},
-		}
-	}
+		},
+	},
 }
 
 local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
@@ -154,14 +154,16 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = t
 
 -- Git Hunks
 local gs = require 'gitsigns'
-local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(
-	function () gs.nav_hunk 'next' end,
-	function () gs.nav_hunk 'prev' end
-)
+local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(function()
+	gs.nav_hunk 'next'
+end, function()
+	gs.nav_hunk 'prev'
+end)
 vim.keymap.set({ 'n', 'x', 'o' }, ']g', next_hunk_repeat)
 vim.keymap.set({ 'n', 'x', 'o' }, '[g', prev_hunk_repeat)
 
 -- LSP diagnostics
-local next_diagnostic_repeat, prev_diagnostic_repeat = ts_repeat_move.make_repeatable_move_pair(vim.diagnostic.goto_next, vim.diagnostic.goto_prev)
+local next_diagnostic_repeat, prev_diagnostic_repeat =
+	ts_repeat_move.make_repeatable_move_pair(vim.diagnostic.goto_next, vim.diagnostic.goto_prev)
 vim.keymap.set({ 'n', 'x', 'o' }, ']d', next_diagnostic_repeat)
 vim.keymap.set({ 'n', 'x', 'o' }, '[d', prev_diagnostic_repeat)

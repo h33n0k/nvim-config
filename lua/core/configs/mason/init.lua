@@ -1,9 +1,9 @@
 local servers = require 'core.configs.mason.servers'
 
-require 'mason'.setup {
+require('mason').setup {
 	ui = {
-		border = 'rounded'
-	}
+		border = 'rounded',
+	},
 }
 
 merged = {}
@@ -15,17 +15,17 @@ end
 
 -- Add lsp tools
 for _, entry in ipairs(servers.lsp or {}) do
-	if type(entry) == "string" then
+	if type(entry) == 'string' then
 		table.insert(merged, entry)
-	elseif type(entry) == "table" and entry.server then
+	elseif type(entry) == 'table' and entry.server then
 		table.insert(merged, entry.server)
 	end
 end
 
-require 'mason-tool-installer'.setup {
+require('mason-tool-installer').setup {
 	ensure_installed = merged,
 	auto_update = true,
-  run_on_start = true
+	run_on_start = true,
 }
 
 require 'core.configs.mason.cmp'

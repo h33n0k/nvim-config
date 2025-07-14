@@ -2,7 +2,7 @@ local cmdline_height = 1
 local popupmenu_height = 8
 local rows = vim.api.nvim_win_get_height(0)
 
-require('noice').setup({
+require('noice').setup {
 	presets = {
 		bottom_search = false,
 		command_palette = true,
@@ -23,8 +23,8 @@ require('noice').setup({
 			filter = {
 				event = 'msg_show',
 			},
-			opts = { skip = true }
-		}
+			opts = { skip = true },
+		},
 	},
 	messages = { enabled = true },
 	notify = { enabled = false },
@@ -32,22 +32,22 @@ require('noice').setup({
 		cmdline_popupmenu = {
 			position = {
 				row = rows - cmdline_height - popupmenu_height,
-				col = 0
+				col = 0,
 			},
 			size = {
 				width = 'auto',
-				height = popupmenu_height
-			}
+				height = popupmenu_height,
+			},
 		},
 		cmdline = {
 			position = {
 				row = -1,
-				col = 0
+				col = 0,
 			},
 			size = {
 				width = 'auto',
-				height = cmdline_height
-			}
-		}
-	}
-})
+				height = cmdline_height,
+			},
+		},
+	},
+}

@@ -3,68 +3,68 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- Remove whitespace on save (except for markdown files)
 autocmd('BufWritePre', {
-  callback = function()
-    if vim.bo.filetype ~= 'markdown' then
-      vim.cmd([[%s/\s\+$//e]])
-    end
-  end
+	callback = function()
+		if vim.bo.filetype ~= 'markdown' then
+			vim.cmd [[%s/\s\+$//e]]
+		end
+	end,
 })
 
 -- Prevent auto commenting new line
 autocmd('Filetype', {
 	pattern = '*',
-	callback = function ()
-		vim.opt_local.formatoptions:remove('o')
-	end
+	callback = function()
+		vim.opt_local.formatoptions:remove 'o'
+	end,
 })
 
 -- Highlight on yank
 augroup('YankHighlight', { clear = true })
 autocmd('TextYankPost', {
-  group = 'YankHighlight',
-  callback = function()
-		vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 200 })
-  end
+	group = 'YankHighlight',
+	callback = function()
+		vim.highlight.on_yank { higroup = 'IncSearch', timeout = 200 }
+	end,
 })
 
 -- Set indentation to 2 spaces
 augroup('setIndent', { clear = true })
 autocmd('Filetype', {
-  group = 'setIndent',
-  pattern = { 'yaml' },
-  command = 'setlocal shiftwidth=2 tabstop=2'
+	group = 'setIndent',
+	pattern = { 'yaml' },
+	command = 'setlocal shiftwidth=2 tabstop=2',
 })
 
 -- Set correct file formats
-for _, format in pairs({
-	{ { '*.zsh', '.zshrc', '.zshenv', '.zprofile' }, 'bash' }
-}) do
+for _, format in pairs {
+	{ { '*.zsh', '.zshrc', '.zshenv', '.zprofile' }, 'bash' },
+} do
 	autocmd({ 'BufRead', 'BufNewFile' }, {
 		pattern = format[1],
-		callback = function ()
+		callback = function()
 			vim.bo.filetype = format[2]
-		end
+		end,
 	})
 end
 
 -- Close help buffer with q
 autocmd('Filetype', {
 	pattern = 'help',
-	callback = function ()
+	callback = function()
 		vim.api.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
-	end
+	end,
 })
 
 -- Auto insert template in new files
-for _, template in pairs({
+for _, template in pairs {
 	{ { '*.sh' }, {
 		'#!/bin/bash',
-		''
+		'',
 	} },
 	{ { '*.yml', '.yaml' }, {
 		'---',
-	} }
-}) do
+	} },
+} do
 	autocmd('BufNewFile', {
 		pattern = template[1],
 		callback = function()
@@ -75,16 +75,16 @@ end
 
 -- Auto insert in terminal
 autocmd('TermOpen', {
-  pattern = '*',
-  command = 'startinsert'
+	pattern = '*',
+	command = 'startinsert',
 })
 
 -- Automaticaly ask to reload file when changed
 autocmd('FocusGained', {
-  command = 'checktime'
+	command = 'checktime',
 })
 
 -- Set vertical cursor when exiting
 autocmd('VimLeave', {
-  command = 'set guicursor=a:ver25'
+	command = 'set guicursor=a:ver25',
 })
