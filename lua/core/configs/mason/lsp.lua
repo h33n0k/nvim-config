@@ -1,4 +1,4 @@
-local servers = require 'core.configs.mason.lsp.servers'
+local servers = require 'core.configs.mason.servers'.lsp
 
 local navic = require 'nvim-navic'
 local lspconfig = require 'lspconfig'
@@ -6,20 +6,6 @@ local lsp_status = require 'lsp-status'
 
 lsp_status.register_progress()
 local capabilities = vim.tbl_extend('keep', require 'cmp_nvim_lsp'.default_capabilities() or {}, lsp_status.capabilities)
-
-local ensure_installed = {}
-for _, server in pairs(servers) do
-	local name = server
-	if (type(server) == 'table') then
-		name = server.server
-	end
-	table.insert(ensure_installed, name)
-end
-
-require 'mason-lspconfig'.setup {
-	automatic_installation = true,
-	ensure_installed = ensure_installed
-}
 
 require 'neodev'.setup()
 
