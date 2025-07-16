@@ -123,10 +123,11 @@ require 'packer'.startup(function(use)
 		'folke/neodev.nvim',
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
+		'WhoIsSethDaniel/mason-tool-installer.nvim',
 		'neovim/nvim-lspconfig',
 		'stevearc/conform.nvim'
 		},
-		config = function() require 'core.mason' end
+		config = function() require 'core.configs.mason' end
 	}
 
 	-- UI
