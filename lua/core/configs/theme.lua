@@ -2,6 +2,20 @@ local palette = require 'core.colors'
 require('catppuccin').setup {
 	flavour = 'macchiato',
 	transparent_background = true,
+	float = {
+		transparent = true,
+		solid = true,
+	},
+	integrations = {
+		alpha = true,
+		gitsigns = true,
+		hop = true,
+		noice = true,
+		treesitter_context = true,
+		treesitter = true,
+		ufo = true,
+		telescope = true,
+	},
 }
 
 vim.cmd 'colorscheme catppuccin'

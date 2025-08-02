@@ -76,6 +76,8 @@ vim.opt.shortmess:append 'sI'
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
 
 -- Optionally enable clipboard integration
 -- vim.opt.clipboard:append("unnamedplus")
