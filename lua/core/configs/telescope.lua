@@ -24,6 +24,7 @@ telescope.setup {
 			'%.gz',
 			'%.7z',
 			'%.pdf',
+			'yarn.lock',
 		},
 		vimgrep_arguments = {
 			'rg',

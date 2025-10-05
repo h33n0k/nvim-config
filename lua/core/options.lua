@@ -59,7 +59,7 @@ vim.opt.synmaxcol = 240 -- Max column for syntax highlight
 vim.opt.errorbells = false -- No error bells
 vim.opt.backspace = 'indent,eol,start' -- Better backspace
 vim.opt.autochdir = false -- Don't auto change directory
-vim.opt.iskeyword:append '-' -- Treat dash as part of word
+-- vim.opt.iskeyword:append '-' -- Treat dash as part of word
 vim.opt.path:append '**' -- Search in subdirectories
 vim.opt.modifiable = true -- Allow buffer modifications
 vim.opt.encoding = 'UTF-8' -- Encoding

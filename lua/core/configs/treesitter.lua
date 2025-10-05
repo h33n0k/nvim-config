@@ -64,10 +64,10 @@ require('nvim-treesitter.configs').setup {
 				['l='] = { query = '@assignment.lhs', desc = 'Select left hand side of an assignment' },
 				['r='] = { query = '@assignment.rhs', desc = 'Select right hand side of an assignment' },
 				-- Property
-				['a:'] = { query = '@property.outer', desc = 'Select outer part of an object property' },
-				['i:'] = { query = '@property.inner', desc = 'Select inner part of an object property' },
-				['l:'] = { query = '@property.lhs', desc = 'Select left part of an object property' },
-				['r:'] = { query = '@property.rhs', desc = 'Select right part of an object property' },
+				['ao'] = { query = '@property.outer', desc = 'Select outer part of an object property' },
+				['io'] = { query = '@property.inner', desc = 'Select inner part of an object property' },
+				['lo'] = { query = '@property.lhs', desc = 'Select left part of an object property' },
+				['ro'] = { query = '@property.rhs', desc = 'Select right part of an object property' },
 				-- Argument
 				['aa'] = { query = '@parameter.outer', desc = 'Select outer part of a parameter/argument' },
 				['ia'] = { query = '@parameter.inner', desc = 'Select inner part of a parameter/argument' },

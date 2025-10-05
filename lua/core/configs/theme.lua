@@ -4,7 +4,7 @@ require('catppuccin').setup {
 	transparent_background = true,
 	float = {
 		transparent = true,
-		solid = true,
+		-- solid = true,
 	},
 	integrations = {
 		alpha = true,
