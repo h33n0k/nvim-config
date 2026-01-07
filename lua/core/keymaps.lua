@@ -34,6 +34,15 @@ end
 -- Select inner line
 vim.keymap.set('n', '<A-v>', '^vg_', { noremap = true })
 
+-- Move line
+vim.keymap.set('n', '<Leader>j', function()
+	vim.cmd('m .+' .. vim.v.count1)
+end, { noremap = true, silent = true })
+
+vim.keymap.set('n', '<Leader>k', function()
+	vim.cmd('m .-' .. (vim.v.count1 + 1))
+end, { noremap = true, silent = true })
+
 -- Clear Highlights
 vim.keymap.set('n', '<A-SPACE>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 vim.keymap.set('n', '<leader>ff', ':find ', { desc = 'Find file' })

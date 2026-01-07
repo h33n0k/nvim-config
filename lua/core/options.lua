@@ -23,6 +23,7 @@ vim.opt.laststatus = 3 -- Global statusline
 vim.opt.completeopt = 'menuone,noinsert,noselect' -- Completion options
 vim.opt.splitright = true -- Vertical splits go right
 vim.opt.splitbelow = true -- Horizontal splits go below
+vim.opt.inccommand = 'split'
 
 -- Tabs, indent, fold, scroll
 vim.opt.expandtab = false -- Use tabs instead of spaces
