@@ -33,6 +33,7 @@ end
 
 -- Select inner line
 vim.keymap.set('n', '<A-v>', '^vg_', { noremap = true })
+vim.keymap.set('v', '$', 'g_', { noremap = true }) -- Prevent selecting the newline (\n) at the end of the line
 
 -- Move line
 vim.keymap.set('n', '<Leader>j', function()
