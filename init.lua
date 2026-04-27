@@ -8,13 +8,12 @@ end
 if isWindows() then
 	local function get_env(var, default)
 		local value = vim.fn.getenv(var)
-		if value ~= nil and value ~= '' then
-			return value
-		else
-			return default
-		end
+		return (value ~= nil and value ~= '') and value or default
 	end
-	local local_appdata = get_env('LOCALAPPDATA', 'C:\\Users\\(nom_dutilisateur)\\AppData\\Local')
+
+	local username = get_env('USERNAME', 'Default')
+	local local_appdata = get_env('LOCALAPPDATA', 'C:\\Users\\' .. username .. '\\AppData\\Local')
+
 	packerPath = local_appdata .. '\\nvim-data\\site\\pack\\packer\\start\\packer.nvim'
 else
 	packerPath = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -22,6 +21,7 @@ end
 
 local ensure_packer = function()
 	if vim.fn.empty(vim.fn.glob(packerPath)) > 0 then
+		vim.fn.mkdir(vim.fn.fnamemodify(packerPath, ':h'), 'p')
 		vim.fn.system {
 			'git',
 			'clone',
