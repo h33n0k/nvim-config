@@ -1,3 +1,5 @@
+local theme = require 'core.configs.theme'
+
 local servers = require('core.configs.mason.servers').lsp
 
 local navic = require 'nvim-navic'
@@ -14,20 +16,9 @@ local defaultSetup = {
 	navic = true,
 }
 
-local border = {
-	{ '┌', 'FloatBorder' }, -- Top-left corner
-	{ '─', 'FloatBorder' }, -- Top horizontal line
-	{ '┐', 'FloatBorder' }, -- Top-right corner
-	{ '│', 'FloatBorder' }, -- Right vertical line
-	{ '┘', 'FloatBorder' }, -- Bottom-right corner
-	{ '─', 'FloatBorder' }, -- Bottom horizontal line
-	{ '└', 'FloatBorder' }, -- Bottom-left corner
-	{ '│', 'FloatBorder' }, -- Left vertical line
-}
-
 local handlers = {
-	['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-	['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+	['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = theme.border }),
+	['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = theme.border }),
 }
 
 for _, server in pairs(servers) do
