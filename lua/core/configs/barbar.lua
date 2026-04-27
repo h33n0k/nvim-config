@@ -1,4 +1,4 @@
-local palette = require 'core.colors'
+local theme = require 'core.configs.theme'
 
 require('barbar').setup {
 	auto_hide = true,
@@ -22,8 +22,8 @@ require('barbar').setup {
 	},
 }
 
-local currentColor = palette.sapphire
-local normalColor = palette.overlay1
+local currentColor = theme.palette.sapphire
+local normalColor = theme.palette.overlay1
 
 local status = {
 	'STATUS',

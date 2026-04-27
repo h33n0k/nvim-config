@@ -1,5 +1,3 @@
-local palette = require 'core.colors'
-
 require('toggleterm').setup {
 	size = 10,
 	open_mapping = [[<A-:>]],
