@@ -35,24 +35,6 @@ require('nvim-treesitter.configs').setup {
 			node_decremental = '<bs>',
 		},
 	},
-	refactor = {
-		smart_rename = { enable = false },
-		navigation = {
-			enable = true,
-			keymaps = {
-				goto_definition = 'gnd',
-				list_definitions = false,
-				list_definitions_toc = false,
-				goto_next_usage = '<C-*>',
-				goto_previous_usage = '<C-ù>',
-			},
-		},
-		highlight_current_scope = { enable = false },
-		highlight_definitions = {
-			enable = true,
-			clear_on_cursor_move = false,
-		},
-	},
 	textobjects = {
 		select = {
 			enable = true,
@@ -87,8 +69,8 @@ require('nvim-treesitter.configs').setup {
 				['ac'] = { query = '@class.outer', desc = 'Select outer part of a class' },
 				['ic'] = { query = '@class.inner', desc = 'Select inner part of a class' },
 				-- Comment
-				['ah'] = { query = '@comment.outer', desc = 'Select outer part of a class' },
-				['ih'] = { query = '@comment.inner', desc = 'Select outer part of a class' },
+				['ah'] = { query = '@comment.outer', desc = 'Select outer part of a comment' },
+				['ih'] = { query = '@comment.inner', desc = 'Select inner part of a comment' },
 			},
 		},
 		swap = {
