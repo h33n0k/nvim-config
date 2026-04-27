@@ -1,3 +1,9 @@
+require 'core.options'
+require 'core.autocmds'
+
+vim.g.mapleader = ' '
+K = require 'core.keymaps'
+
 -- Install packer
 local packerPath
 
@@ -120,6 +126,8 @@ require('packer').startup(function(use)
 				keys = 'hjkl',
 				uppercase_labels = true,
 			}
+
+			K.load 'hop'
 		end,
 	}
 
@@ -146,6 +154,7 @@ require('packer').startup(function(use)
 		},
 		config = function()
 			require 'core.configs.mason'
+			K.load 'cmp'
 		end,
 	}
 
@@ -155,13 +164,7 @@ require('packer').startup(function(use)
 		'nvim-pack/nvim-spectre',
 		config = function()
 			require('spectre').setup()
-		end,
-	}
-
-	use {
-		'folke/noice.nvim',
-		config = function()
-			require 'core.configs.noice'
+			K.load 'spectre'
 		end,
 	}
 
@@ -179,6 +182,7 @@ require('packer').startup(function(use)
 		'akinsho/toggleterm.nvim',
 		config = function()
 			require 'core.configs.toggleterm'
+			K.load 'toggleterm'
 		end,
 	}
 
@@ -189,6 +193,7 @@ require('packer').startup(function(use)
 		},
 		config = function()
 			require('gitsigns').setup()
+			K.load 'gitsigns'
 		end,
 	}
 
@@ -224,6 +229,14 @@ require('packer').startup(function(use)
 		},
 		config = function()
 			require 'core.configs.telescope'
+			K.load 'telescope'
+		end,
+	}
+
+	use {
+		'folke/noice.nvim',
+		config = function()
+			require 'core.configs.noice'
 		end,
 	}
 
@@ -248,6 +261,7 @@ require('packer').startup(function(use)
 		},
 		config = function()
 			require 'core.configs.neo-tree'
+			K.load 'neotree'
 		end,
 	}
 
@@ -255,8 +269,3 @@ require('packer').startup(function(use)
 		require('packer').sync()
 	end
 end)
-
-vim.g.mapleader = ' '
-require 'core.options'
-require 'core.autocmds'
-require 'core.keymaps'

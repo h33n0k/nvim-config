@@ -1,3 +1,5 @@
+local M = {}
+
 -- Exit Terminal Mode
 vim.keymap.set('t', '<A-ESC>', '<C-\\><C-N>')
 
@@ -88,96 +90,86 @@ vim.keymap.set('n', '<Leader>x', ':wqa<CR>', { desc = 'Write and quit all buffer
 vim.keymap.set('n', '<Leader>R', ':e!<CR>', { desc = 'Reload buffer' })
 
 -- Plugins Keymaps
-for _, config in pairs {
-	{
-		'cmp',
-		function()
-			local prefix = '<Leader>l'
+
+local keymaps = {
+	neotree = {
+		deps = { 'neo-tree' },
+		maps = {
+			{ 'n', '<A-n>', ':NeoTreeFocusToggle<CR>', { desc = 'Open file tree' } },
+			{ 'n', '<A-f>', ':NeoTreeFloatToggle<CR>', { desc = 'Open floating file tree' } },
+		}
+	},
+	telescope = {
+		deps = { 'telescope' },
+		maps = {
+			{ 'n', '<C-P>', ':Telescope find_files<CR>', { desc = 'Find files' } },
+			{ 'n', '<Leader>fh', ':Telescope live_grep<CR>', { desc = 'Grep find' } },
+			{ 'n', '<Leader>r', ':Telescope oldfiles<CR>', { desc = 'Find recent files' } },
+		}
+	},
+	toggleterm = {
+		deps = { 'toggleterm' },
+		maps = {
+			{ 'n', '<A-g>', ':lua term_lazygit()<CR>', { desc = 'Open lazygit' } },
+			{ 'n', '<A-d>', ':lua term_lazydocker()<CR>', { desc = 'Open lazydocker' } },
+			{ 'n', '<A-y>', ':lua term_yazi()<CR>', { desc = 'Open yazi' } },
+			{ 'n', '<A-s>', ':lua term_spt()<CR>', { desc = 'Open spt' } },
+		}
+	},
+	cmp = {
+		deps = { 'cmp', 'telescope.builtin' },
+		leader = '<Leader>l',
+		maps = function(cmp, telescope)
 			return {
-				{ 'n', prefix .. 'gr', require('telescope.builtin').lsp_references, { desc = 'Browse references' } },
-				{ 'n', prefix .. 'r', vim.lsp.buf.rename, { desc = 'LSP rename' } },
-				{ 'n', prefix .. 'ca', vim.lsp.buf.code_action, { desc = 'Code action' } },
-				{ 'n', prefix .. 'D', vim.lsp.buf.definition, { desc = 'See definition' } },
-				{ 'n', prefix .. 'i', vim.lsp.buf.implementation, { desc = 'Goto implementation' } },
-				{ 'n', prefix .. 'l', vim.lsp.buf.hover, { desc = 'LSP documentation' } },
-				{
-					'n',
-					prefix .. 'd',
-					function()
-						vim.diagnostic.open_float(nil, { border = 'rounded' })
-					end,
-					{ desc = 'Open floating diagnostic' },
+				{ 'n', 'gr', require('telescope.builtin').lsp_references, { desc = 'Browse references' } },
+				{ 'n', 'r', vim.lsp.buf.rename, { desc = 'LSP rename' } },
+				{ 'n', 'ca', vim.lsp.buf.code_action, { desc = 'Code action' } },
+				{ 'n', 'D', vim.lsp.buf.definition, { desc = 'See definition' } },
+				{ 'n', 'i', vim.lsp.buf.implementation, { desc = 'Goto implementation' } },
+				{ 'n', 'l', vim.lsp.buf.hover, { desc = 'LSP documentation' } },
+				{ 'n', 'd', function()
+					vim.diagnostic.open_float(nil, { border = 'rounded' })
+					end, { desc = 'Open floating diagnostic' },
 				},
 			}
-		end,
+		end
 	},
-	{
-		'telescope',
-		function()
+	spectre = {
+		deps = { 'spectre' },
+		leader = '<Leader>!',
+		maps = function(spectre)
 			return {
-				{ 'n', '<C-P>', ':Telescope find_files<CR>', { desc = 'Find files' } },
-				{ 'n', '<Leader>fh', ':Telescope live_grep<CR>', { desc = 'Grep find' } },
-				{ 'n', '<Leader>r', ':Telescope oldfiles<CR>', { desc = 'Find recent files' } },
-			}
-		end,
-	},
-	{
-		'neo-tree',
-		function()
-			return {
-				{ 'n', '<A-n>', ':NeoTreeFocusToggle<CR>', { desc = 'Open file tree' } },
-				{ 'n', '<A-f>', ':NeoTreeFloatToggle<CR>', { desc = 'Open floating file tree' } },
-			}
-		end,
-	},
-	{
-		'spectre',
-		function(modules)
-			local prefix = '<Leader>!'
-			return {
-				{ 'n', prefix .. 'o', modules[1].toggle, { desc = 'Toggle spectre' } },
-				{
-					'n',
-					prefix .. 'p',
-					function()
-						modules[1].open_file_search { select_word = true }
-					end,
-					{},
+				{ 'n', 'o', spectre.toggle, { desc = 'Toggle spectre' } },
+				{ 'n', 'p', function()
+					spectre.open_file_search { select_word = true }
+					end, {},
 				},
-				{ 'n', prefix .. 'v', modules[1].open_visual, {} },
-				{
-					'n',
-					prefix .. 'w',
-					function()
-						modules[1].open_visual { select_word = true }
-					end,
-					{},
+				{ 'n', 'v', spectre.open_visual, {} },
+				{ 'n', 'w', function()
+					spectre.open_visual { select_word = true }
+				end, {},
 				},
 			}
-		end,
+		end
 	},
-	{
-		{ 'hop', 'hop.hint' },
-		function(modules)
+	hop = {
+		deps = { 'hop', 'hop.hint' },
+		maps = function(hop, hint)
 			return {
 				{ 'n', 'S', ':HopChar1<CR>', { desc = 'Find char' } },
 				{ 'n', 's', ':HopChar2<CR>', { desc = 'Find chars' } },
-				{
-					'',
-					'<Leader>f',
-					function()
-						modules[1].hint_char1 {
-							direction = modules[2].HintDirection.AFTER_CURSOR,
-							current_line_only = true,
-						}
-					end,
-					{ remap = true, desc = 'Fined inline char' },
+				{ '', '<Leader>f', function()
+					hop.hint_char1 {
+						direction = modules[2].HintDirection.AFTER_CURSOR,
+						current_line_only = true,
+					}
+					end, { remap = true, desc = 'Fined inline char' },
 				},
 				{
 					'',
 					'<Leader>F',
 					function()
-						modules[1].hint_char1 {
+						hop.hint_char1 {
 							direction = modules[2].HintDirection.BEFORE_CURSOR,
 							current_line_only = true,
 						}
@@ -188,8 +180,8 @@ for _, config in pairs {
 					'',
 					'<Leader>t',
 					function()
-						modules[1].hint_char1 {
-							direction = modules[2].HintDirection.AFTER_CURSOR,
+						hop.hint_char1 {
+							direction = hint.HintDirection.AFTER_CURSOR,
 							current_line_only = true,
 							hint_offset = -1,
 						}
@@ -200,8 +192,8 @@ for _, config in pairs {
 					'',
 					'<Leader>T',
 					function()
-						modules[1].hint_char1 {
-							direction = modules[2].HintDirection.BEFORE_CURSOR,
+						hop.hint_char1 {
+							direction = hint.HintDirection.BEFORE_CURSOR,
 							current_line_only = true,
 							hint_offset = 1,
 						}
@@ -209,86 +201,85 @@ for _, config in pairs {
 					{ remap = true, desc = 'To inline char previous' },
 				},
 			}
-		end,
+		end
 	},
-	{
-		'toggleterm',
-		function()
+	gitsigns = {
+		deps = { 'gitsigns' },
+		leader = '<Leader>g',
+		maps = function(gitsigns)
 			return {
-				{ 'n', '<A-g>', ':lua term_lazygit()<CR>', { desc = 'Open lazygit' } },
-				{ 'n', '<A-d>', ':lua term_lazydocker()<CR>', { desc = 'Open lazydocker' } },
-				{ 'n', '<A-y>', ':lua term_yazi()<CR>', { desc = 'Open yazi' } },
-				{ 'n', '<A-s>', ':lua term_spt()<CR>', { desc = 'Open spt' } },
-			}
-		end,
-	},
-	{
-		'gitsigns',
-		function(modules)
-			local prefix = '<Leader>g'
-			return {
-				{ 'n', prefix .. 'w', ':Gwrite<CR>', { desc = 'Add file' } },
-				{ 'n', prefix .. 'h', modules[1].preview_hunk, { desc = 'Preview hunk' } },
-				{ 'n', prefix .. 'i', modules[1].preview_hunk_inline, { desc = 'Preview Inline hunk' } },
+				{ 'n', 'w', ':Gwrite<CR>', { desc = 'Add file' } },
+				{ 'n', 'h', gitsigns.preview_hunk, { desc = 'Preview hunk' } },
+				{ 'n', 'i', gitsigns.preview_hunk_inline, { desc = 'Preview Inline hunk' } },
 				{
 					'n',
-					prefix .. 'b',
+					'b',
 					function()
-						modules[1].blame_line { full = true }
+						gitsigns.blame_line { full = true }
 					end,
 					{ desc = 'Toggle Line Blame' },
 				},
-				{ 'n', prefix .. 's', modules[1].stage_hunk, { desc = 'Stage hunk' } },
-				{ 'n', prefix .. 'r', modules[1].reset_hunk, { desc = 'Reset hunk' } },
-				{ 'n', prefix .. 'dv', ':Gvdiffsplit<CR>', { desc = 'Vertical Diff' } },
-				{ 'n', prefix .. 'ds', ':Ghdiffsplit<CR>', { desc = 'Horizontal Diff' } },
-				{ 'n', prefix .. 's', modules[1].stage_hunk, { desc = 'Stage hunk' } },
-				{ 'n', prefix .. 'r', modules[1].reset_hunk, { desc = 'Reset hunk' } },
+				{ 'n', 's', gitsigns.stage_hunk, { desc = 'Stage hunk' } },
+				{ 'n', 'r', gitsigns.reset_hunk, { desc = 'Reset hunk' } },
+				{ 'n', 'dv', ':Gvdiffsplit<CR>', { desc = 'Vertical Diff' } },
+				{ 'n', 'ds', ':Ghdiffsplit<CR>', { desc = 'Horizontal Diff' } },
+				{ 'n', 's', gitsigns.stage_hunk, { desc = 'Stage hunk' } },
+				{ 'n', 'r', gitsigns.reset_hunk, { desc = 'Reset hunk' } },
 				{
 					'v',
-					prefix .. 's',
+					's',
 					function()
-						modules[1].stage_hunk { vim.fn.line 'v', vim.fn.line '.' }
+						gitsigns.stage_hunk { vim.fn.line 'v', vim.fn.line '.' }
 					end,
 					{ desc = 'Stage selection' },
 				},
 				{
 					'v',
-					prefix .. 'r',
+					'r',
 					function()
-						modules[1].reset_hunk { vim.fn.line 'v', vim.fn.line '.' }
+						gitsigns.reset_hunk { vim.fn.line 'v', vim.fn.line '.' }
 					end,
 					{ desc = 'Reset selection' },
 				},
 			}
-		end,
-	},
-} do
-	local dependencies = config[1]
-	if type(config[1]) == 'string' then
-		dependencies = { config[1] }
-	end
-
-	local status = true
-	local modules = {}
-	local err_dependencies = ''
-	for _, dependency in pairs(dependencies) do
-		local module_status, module = pcall(require, dependency)
-		status = status and module_status
-		table.insert(modules, module)
-		if err_dependencies == '' then
-			err_dependencies = '"' .. dependency .. '"'
-		else
-			err_dependencies = err_dependencies .. ', "' .. dependency .. '"'
 		end
-	end
+	}
+}
 
-	if status then
-		local mappings = config[2](modules)
+function M.load(key)
+	local kb = keymaps[key]
+	if kb then
+
+		-- Check dependencies
+		local err_deps = ''
+		local deps = {}
+		for _, dep in pairs(kb.deps) do
+			local status, d = pcall(require, dep)
+			table.insert(deps, d)
+
+			if not status then
+				err_deps = err_deps .. (err_deps == '' and '' or ', ') .. '"' .. dep .. '"'
+			end
+		end
+
+		if err_deps ~= '' then
+			return vim.notify('Could not load keymaps for plugins ' .. err_deps .. '.', vim.log.levels.ERROR)
+		end
+
+		local mappings = kb.maps
+		if type(mappings) == 'function' then
+			mappings = mappings(unpack(deps))
+		end
+
 		for _, map in pairs(mappings) do
-			vim.keymap.set(map[1], map[2], map[3], map[4])
+			local bind = map[2]
+			if kb.leader then
+				bind = kb.leader .. map[2]
+			end
+			vim.keymap.set(map[1], bind, map[3], map[4])
 		end
-	else
-		vim.notify('Could not load keymaps for plugins ' .. err_dependencies .. '.', vim.log.levels.ERROR)
+
 	end
 end
+
+return M
