@@ -276,6 +276,13 @@ local keymaps = {
 			local next_diagnostic, prev_diagnostic =
 				repeat_move.make_repeatable_move_pair(vim.diagnostic.goto_next, vim.diagnostic.goto_prev)
 
+			-- Quick fixes
+			local next_qf, prev_qf = repeat_move.make_repeatable_move_pair(function()
+				vim.cmd('cnext ' .. vim.v.count1)
+			end, function()
+				vim.cmd('cprev ' .. vim.v.count1)
+			end)
+
 			return {
 				-- Object select/jump
 				{
@@ -782,6 +789,8 @@ local keymaps = {
 				{ { 'n', 'x', 'o' }, '[g', prev_hunk, {} },
 				{ { 'n', 'x', 'o' }, ']d', next_diagnostic, {} },
 				{ { 'n', 'x', 'o' }, '[d', prev_diagnostic, {} },
+				{ { 'n', 'x', 'o' }, ']q', next_qf, {} },
+				{ { 'n', 'x', 'o' }, '[q', prev_qf, {} },
 			}
 		end,
 	},
