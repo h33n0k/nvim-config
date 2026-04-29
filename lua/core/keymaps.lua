@@ -136,7 +136,7 @@ local keymaps = {
 					{ desc = 'Open floating diagnostic' },
 				},
 			}
-		end
+		end,
 	},
 	spectre = {
 		deps = { 'spectre' },
@@ -162,7 +162,7 @@ local keymaps = {
 					{},
 				},
 			}
-		end
+		end,
 	},
 	hop = {
 		deps = { 'hop', 'hop.hint' },
@@ -217,7 +217,7 @@ local keymaps = {
 					{ remap = true, desc = 'To inline char previous' },
 				},
 			}
-		end
+		end,
 	},
 	gitsigns = {
 		deps = { 'gitsigns' },
