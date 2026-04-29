@@ -143,7 +143,6 @@ require('packer').startup(function(use)
 		'hrsh7th/cmp-nvim-lsp',
 		requires = {
 			'L3MON4D3/LuaSnip',
-			'nvim-lua/lsp-status.nvim',
 			'hrsh7th/nvim-cmp',
 			'folke/neodev.nvim',
 			'williamboman/mason.nvim',

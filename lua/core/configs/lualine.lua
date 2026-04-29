@@ -52,10 +52,6 @@ require('lualine').setup {
 			{ noice.api.status.search.get, cond = noice.api.status.search.has },
 		},
 		lualine_y = {},
-		lualine_z = {
-			function()
-				return require('lsp-status').status()
-			end,
-		},
+		lualine_z = { 'lsp_status' },
 	},
 }
