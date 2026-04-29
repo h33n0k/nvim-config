@@ -266,8 +266,16 @@ local keymaps = {
 			'nvim-treesitter-textobjects.select',
 			'nvim-treesitter-textobjects.swap',
 			'nvim-treesitter-textobjects.move',
+			'nvim-treesitter-textobjects.repeatable_move',
+			'repeatable_move',
+			'gitsigns',
 		},
-		maps = function(_, select, swap, move)
+		maps = function(_, select, swap, move, to_repeat, repeat_move, gs)
+			-- Git hunks
+			local next_hunk, prev_hunk = repeat_move.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
+			local next_diagnostic, prev_diagnostic =
+				repeat_move.make_repeatable_move_pair(vim.diagnostic.goto_next, vim.diagnostic.goto_prev)
+
 			return {
 				-- Object select/jump
 				{
@@ -762,6 +770,19 @@ local keymaps = {
 					end,
 					{ desc = 'Previous comment end' },
 				},
+
+				-- Repeatable Moves
+				{ { 'n', 'x', 'o' }, ';', to_repeat.repeat_last_move_next, {} },
+				{ { 'n', 'x', 'o' }, ',', to_repeat.repeat_last_move_previous, {} },
+				{ { 'n', 'x', 'o' }, 'f', to_repeat.builtin_f_expr, { expr = true } },
+				{ { 'n', 'x', 'o' }, 'F', to_repeat.builtin_F_expr, { expr = true } },
+				{ { 'n', 'x', 'o' }, 't', to_repeat.builtin_t_expr, { expr = true } },
+				{ { 'n', 'x', 'o' }, 'T', to_repeat.builtin_T_expr, { expr = true } },
+				{ { 'n', 'x', 'o' }, ']g', next_hunk, {} },
+				{ { 'n', 'x', 'o' }, '[g', prev_hunk, {} },
+				{ { 'n', 'x', 'o' }, ']d', next_diagnostic, {} },
+				{ { 'n', 'x', 'o' }, '[d', prev_diagnostic, {} },
+			}
 		end,
 	},
 }

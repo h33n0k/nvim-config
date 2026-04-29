@@ -82,6 +82,7 @@ require('packer').startup(function(use)
 		requires = {
 			'nvim-treesitter/nvim-treesitter',
 			'neovim-treesitter/treesitter-parser-registry',
+			'kiyoon/repeatable-move.nvim',
 		},
 		config = function()
 			require 'core.configs.treesitter'
