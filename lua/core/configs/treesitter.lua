@@ -1,151 +1,52 @@
-require('nvim-treesitter.configs').setup {
-	ignore_install = {},
-	auto_install = true,
-	modules = {},
-	ensure_installed = {
-		'c',
+require('nvim-treesitter').install {
+	'bash',
+	'comment',
+	'lua',
+	'gitignore',
+	'javascript',
+	'json',
+	'python',
+	'scss',
+	'sql',
+	'tsx',
+	'typescript',
+}
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = {
+		'sh',
 		'bash',
-		'comment',
-		'lua',
+		'zsh',
+		'svg',
+		'html',
+		'xml',
+		'typescript',
+		'typescriptreact',
 		'gitignore',
 		'javascript',
 		'json',
-		'python',
-		'scss',
 		'sql',
-		'tsx',
-		'typescript',
-		'rust',
-		'php',
+		'css',
+		'scss',
 	},
-	sync_install = false,
-	autopairs = { enable = true },
-	highlight = {
-		enable = true,
-		disable = { '' },
-		additional_vim_regex_highlighting = true,
+	callback = function()
+		vim.treesitter.start() -- highlighting
+		vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()' -- folds
+		vim.wo.foldmethod = 'expr'
+		vim.bo.indentexpr = 'v:lua.require\'nvim-treesitter\'.indentexpr()' -- indentation
+	end,
+})
+
+require('nvim-treesitter-textobjects').setup {
+	select = {
+		lookahead = true,
+		selection_modes = {
+			['@parameter.outer'] = 'v', -- charwise
+			['@function.outer'] = 'V', -- linewise
+		},
+		include_surrounding_whitespace = false,
 	},
-	indent = { enable = true, disable = { 'yaml' } },
-	incremental_selection = {
-		enable = true,
-		keymaps = {
-			init_selection = '<C-b>',
-			node_incremental = '<C-b>',
-			scope_incremental = false,
-			node_decremental = '<bs>',
-		},
-	},
-	textobjects = {
-		select = {
-			enable = true,
-			lookahead = true,
-			keymaps = {
-				-- Assignment
-				['a='] = { query = '@assignment.outer', desc = 'Select outer part of an assignment' },
-				['i='] = { query = '@assignment.inner', desc = 'Select inner part of an assignment' },
-				['l='] = { query = '@assignment.lhs', desc = 'Select left hand side of an assignment' },
-				['r='] = { query = '@assignment.rhs', desc = 'Select right hand side of an assignment' },
-				-- Property
-				['ao'] = { query = '@property.outer', desc = 'Select outer part of an object property' },
-				['io'] = { query = '@property.inner', desc = 'Select inner part of an object property' },
-				['lo'] = { query = '@property.lhs', desc = 'Select left part of an object property' },
-				['ro'] = { query = '@property.rhs', desc = 'Select right part of an object property' },
-				-- Argument
-				['aa'] = { query = '@parameter.outer', desc = 'Select outer part of a parameter/argument' },
-				['ia'] = { query = '@parameter.inner', desc = 'Select inner part of a parameter/argument' },
-				-- Conditional
-				['ai'] = { query = '@conditional.outer', desc = 'Select outer part of a conditional' },
-				['ii'] = { query = '@conditional.inner', desc = 'Select inner part of a conditional' },
-				-- Loop
-				['al'] = { query = '@loop.outer', desc = 'Select outer part of a loop' },
-				['il'] = { query = '@loop.inner', desc = 'Select inner part of a loop' },
-				-- Function call
-				['af'] = { query = '@call.outer', desc = 'Select outer part of a function call' },
-				['if'] = { query = '@call.inner', desc = 'Select inner part of a function call' },
-				-- Function definition
-				['am'] = { query = '@function.outer', desc = 'Select outer part of a method/function definition' },
-				['im'] = { query = '@function.inner', desc = 'Select inner part of a method/function definition' },
-				-- Class
-				['ac'] = { query = '@class.outer', desc = 'Select outer part of a class' },
-				['ic'] = { query = '@class.inner', desc = 'Select inner part of a class' },
-				-- Comment
-				['ah'] = { query = '@comment.outer', desc = 'Select outer part of a comment' },
-				['ih'] = { query = '@comment.inner', desc = 'Select inner part of a comment' },
-			},
-		},
-		swap = {
-			enable = true,
-			swap_next = {
-				['<leader>na'] = '@parameter.inner', -- swap parameters/argument with next
-				['<leader>n:'] = '@property.outer', -- swap object property with next
-				['<leader>nm'] = '@function.outer', -- swap function with next
-			},
-			swap_previous = {
-				['<leader>pa'] = '@parameter.inner', -- swap parameters/argument with prev
-				['<leader>p:'] = '@property.outer', -- swap object property with prev
-				['<leader>pm'] = '@function.outer', -- swap function with previous
-			},
-		},
-		move = {
-			enable = true,
-			set_jumps = true,
-			goto_next_start = {
-				[']f'] = { query = '@call.outer', desc = 'Next function call start' },
-				[']m'] = { query = '@function.outer', desc = 'Next method/function def start' },
-				[']c'] = { query = '@class.outer', desc = 'Next class start' },
-				[']i'] = { query = '@conditional.outer', desc = 'Next conditional start' },
-				[']l'] = { query = '@loop.outer', desc = 'Next loop start' },
-				[']z'] = { query = '@fold', query_group = 'folds', desc = 'Next fold' },
-				[']h'] = { query = '@comment.outer', desc = 'Next comment start' },
-			},
-			goto_next_end = {
-				[']F'] = { query = '@call.outer', desc = 'Next function call end' },
-				[']M'] = { query = '@function.outer', desc = 'Next method/function def end' },
-				[']C'] = { query = '@class.outer', desc = 'Next class end' },
-				[']I'] = { query = '@conditional.outer', desc = 'Next conditional end' },
-				[']L'] = { query = '@loop.outer', desc = 'Next loop end' },
-				[']H'] = { query = '@comment.outer', desc = 'Next comment end' },
-			},
-			goto_previous_start = {
-				['[f'] = { query = '@call.outer', desc = 'Prev function call start' },
-				['[m'] = { query = '@function.outer', desc = 'Prev method/function def start' },
-				['[c'] = { query = '@class.outer', desc = 'Prev class start' },
-				['[i'] = { query = '@conditional.outer', desc = 'Prev conditional start' },
-				['[l'] = { query = '@loop.outer', desc = 'Prev loop start' },
-				['[h'] = { query = '@comment.outer', desc = 'Prev comment start' },
-			},
-			goto_previous_end = {
-				['[F'] = { query = '@call.outer', desc = 'Prev function call end' },
-				['[M'] = { query = '@function.outer', desc = 'Prev method/function def end' },
-				['[C'] = { query = '@class.outer', desc = 'Prev class end' },
-				['[I'] = { query = '@conditional.outer', desc = 'Prev conditional end' },
-				['[L'] = { query = '@loop.outer', desc = 'Prev loop end' },
-				['[H'] = { query = '@comment.outer', desc = 'Prev comment end' },
-			},
-		},
+	move = {
+		set_jumps = true,
 	},
 }
-
-local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
-vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next)
-vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_previous)
-vim.keymap.set({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f_expr, { expr = true })
-vim.keymap.set({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F_expr, { expr = true })
-vim.keymap.set({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t_expr, { expr = true })
-vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = true })
-
--- Git Hunks
-local gs = require 'gitsigns'
-local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(function()
-	gs.nav_hunk 'next'
-end, function()
-	gs.nav_hunk 'prev'
-end)
-vim.keymap.set({ 'n', 'x', 'o' }, ']g', next_hunk_repeat)
-vim.keymap.set({ 'n', 'x', 'o' }, '[g', prev_hunk_repeat)
-
--- LSP diagnostics
-local next_diagnostic_repeat, prev_diagnostic_repeat =
-	ts_repeat_move.make_repeatable_move_pair(vim.diagnostic.goto_next, vim.diagnostic.goto_prev)
-vim.keymap.set({ 'n', 'x', 'o' }, ']d', next_diagnostic_repeat)
-vim.keymap.set({ 'n', 'x', 'o' }, '[d', prev_diagnostic_repeat)

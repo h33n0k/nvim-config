@@ -79,9 +79,13 @@ require('packer').startup(function(use)
 	use {
 		'nvim-treesitter/nvim-treesitter-textobjects',
 		after = 'nvim-treesitter',
-		requires = 'nvim-treesitter/nvim-treesitter',
+		requires = {
+			'nvim-treesitter/nvim-treesitter',
+			'neovim-treesitter/treesitter-parser-registry',
+		},
 		config = function()
 			require 'core.configs.treesitter'
+			vim.cmd [[TSUpdate]]
 		end,
 	}
 
@@ -216,7 +220,7 @@ require('packer').startup(function(use)
 
 	use {
 		'nvim-telescope/telescope.nvim',
-		tag = '0.1.5',
+		tag = 'v0.2.2',
 		requires = {
 			'nvim-lua/plenary.nvim',
 			'nvim-telescope/telescope-live-grep-args.nvim',
