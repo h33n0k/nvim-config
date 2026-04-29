@@ -5,13 +5,9 @@ vim.g.mapleader = ' '
 K = require 'core.keymaps'
 
 -- Install packer
-local packerPath
+local packerPath = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
-local function isWindows()
-	return vim.fn.has 'win32' == 1 or vim.fn.has 'win64' == 1
-end
-
-if isWindows() then
+if vim.fn.has 'win32' == 1 or vim.fn.has 'win64' == 1 then
 	local function get_env(var, default)
 		local value = vim.fn.getenv(var)
 		return (value ~= nil and value ~= '') and value or default
@@ -21,8 +17,6 @@ if isWindows() then
 	local local_appdata = get_env('LOCALAPPDATA', 'C:\\Users\\' .. username .. '\\AppData\\Local')
 
 	packerPath = local_appdata .. '\\nvim-data\\site\\pack\\packer\\start\\packer.nvim'
-else
-	packerPath = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 end
 
 local ensure_packer = function()
@@ -56,38 +50,20 @@ require('packer').startup(function(use)
 		end,
 	}
 
-	-- Theming
-	use {
-		'catppuccin/nvim',
-		config = function()
-			require 'core.configs.theme'
-		end,
-	}
-
-	use {
-		'lukas-reineke/indent-blankline.nvim',
-		config = function()
-			require 'core.configs.indent-blankline'
-		end,
-	}
-
 	-- Syntax / Highlighting
-	-- use 'NvChad/nvim-colorizer.lua'
 	use 'elkowar/yuck.vim'
 	use { 'Fymyte/rasi.vim', ft = 'rasi' }
 
 	use {
-		'nvim-treesitter/nvim-treesitter-textobjects',
-		after = 'nvim-treesitter',
+		'nvim-treesitter/nvim-treesitter',
 		requires = {
-			'nvim-treesitter/nvim-treesitter',
+			'nvim-treesitter/nvim-treesitter-textobjects',
 			'neovim-treesitter/treesitter-parser-registry',
 			'kiyoon/repeatable-move.nvim',
 		},
 		config = function()
 			require 'core.configs.treesitter'
 			K.load 'treesitter'
-			vim.cmd [[TSUpdate]]
 		end,
 	}
 
@@ -158,6 +134,20 @@ require('packer').startup(function(use)
 	}
 
 	-- UI
+	use {
+		'catppuccin/nvim',
+		config = function()
+			require 'core.configs.theme'
+		end,
+	}
+
+	use {
+		'lukas-reineke/indent-blankline.nvim',
+		config = function()
+			require 'core.configs.indent-blankline'
+		end,
+	}
+
 	use 'tpope/vim-fugitive'
 	use {
 		'nvim-pack/nvim-spectre',
