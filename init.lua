@@ -85,6 +85,7 @@ require('packer').startup(function(use)
 		},
 		config = function()
 			require 'core.configs.treesitter'
+			K.load 'treesitter'
 			vim.cmd [[TSUpdate]]
 		end,
 	}
